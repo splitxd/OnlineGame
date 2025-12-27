@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.rlabrecque.steamworks.n
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kcp2k", "kcp2k.csproj", "{979e3d49-6858-3241-d06c-fe6df83db2f5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{e7de8b59-a927-2d3f-8c4a-0237a49e362d}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{f7950b28-4ef2-df4a-1d22-be40b246b1df}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mirror.Authenticators", "Mirror.Authenticators.csproj", "{905302e0-32e5-f5fc-1fe3-cd37fc3e6991}"
@@ -34,8 +36,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptionTransportEditor", "EncryptionTransportEditor.csproj", "{32ec36b0-3b31-1ee2-c55d-9b601fd75257}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mirror.CompilerSymbols", "Mirror.CompilerSymbols.csproj", "{961b2140-fc52-dc58-7caa-227e2dd96148}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{e7de8b59-a927-2d3f-8c4a-0237a49e362d}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +68,8 @@ Global
 		{3e7d6bb6-c07c-7002-40a5-9d6f903933d9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{979e3d49-6858-3241-d06c-fe6df83db2f5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{979e3d49-6858-3241-d06c-fe6df83db2f5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{e7de8b59-a927-2d3f-8c4a-0237a49e362d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{e7de8b59-a927-2d3f-8c4a-0237a49e362d}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{f7950b28-4ef2-df4a-1d22-be40b246b1df}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{f7950b28-4ef2-df4a-1d22-be40b246b1df}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{905302e0-32e5-f5fc-1fe3-cd37fc3e6991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -76,8 +78,6 @@ Global
 		{32ec36b0-3b31-1ee2-c55d-9b601fd75257}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{961b2140-fc52-dc58-7caa-227e2dd96148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{961b2140-fc52-dc58-7caa-227e2dd96148}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{e7de8b59-a927-2d3f-8c4a-0237a49e362d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{e7de8b59-a927-2d3f-8c4a-0237a49e362d}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
