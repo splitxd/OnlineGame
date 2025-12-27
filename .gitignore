@@ -10,3 +10,31 @@
 /Temp/tempFile.resG
 /Temp/UnityLockfile
 /Temp/workerlic
+# Unity3D
+[Ll]ibrary/
+[Tt]emp/
+Obj/
+Build/
+Builds/
+
+# User-specific files
+.vscode/
+.idea/
+
+# Windows-specific files
+Thumbs.db
+Desktop.ini
+
+# Mac-specific files
+.DS_Store
+
+# Unity-generated files
+UserSettings/
+
+# Files for visual studio and JetBrains Rider
+.vs/
+.vsconfig
+.idea/
+*.suo
+*.user
+*.userprefs
