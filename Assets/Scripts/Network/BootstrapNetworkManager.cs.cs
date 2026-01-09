@@ -32,4 +32,5 @@ public class BootstrapNetworkManager : NetworkBehaviour
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(sceneName);
         }
     }
+    
 }

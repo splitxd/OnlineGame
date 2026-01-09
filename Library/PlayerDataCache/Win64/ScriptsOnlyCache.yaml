@@ -1,19 +1,42 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BootstrapManager
+    - BootstrapNetworkManager
     - DefaultNamespace.Game
     - DefaultNamespace.MenuViewController
     - DefaultNamespace.Player.InputManager
     - DefaultNamespace.Player.PlayerLook
-    - Network.ChatBehaviour
-    - Network.NetworkManagerEnhanced
+    - FishySteamworks.FishySteamworks
+    - MainMenuManager
+    - ManualPlayerSpawner
+    - PlayerCamera
     - PlayerMovement
-    - SteamLobby
-    - SteamManager
-    FizzySteamworks.dll:
-    - Mirror.FizzySteam.FizzySteamworks
-    Mirror.dll:
-    - Mirror.NetworkIdentity
+    FishNet.Demos.dll:
+    - FishNet.Demo.AdditiveScenes.Player
+    - FishNet.Demo.Benchmarks.NetworkTransforms.MoveRandomlyNonPhysics
+    - FishNet.Demo.Benchmarks.NetworkTransforms.MoveRandomlyPhysics
+    - FishNet.Demo.HashGrid.MoveRandomly
+    - FishNet.Demo.Prediction.CharacterControllers.CharacterControllerPrediction
+    - FishNet.Demo.Prediction.Rigidbodies.RigidbodyPrediction
+    - FishNet.Example.ColliderRollbacks.Aim
+    - FishNet.Example.ColliderRollbacks.Fire
+    - FishNet.Example.ColliderRollbacks.PlayerMotor
+    - FishNet.Example.Scened.PlayerController
+    FishNet.Runtime.dll:
+    - FishNet.Component.Prediction.NetworkTrigger
+    - FishNet.Component.Transforming.Beta.NetworkTickSmoother
+    - FishNet.Component.Transforming.NetworkTransform
+    - FishNet.Managing.NetworkManager
+    - FishNet.Managing.Object.DefaultPrefabObjects
+    - FishNet.Managing.Observing.ObserverManager
+    - FishNet.Managing.Transporting.TransportManager
+    - FishNet.Object.EmptyNetworkBehaviour
+    - FishNet.Object.NetworkObject
+    - FishNet.Observing.NetworkObserver
+    Heathen.Steamworks.dll:
+    - HeathenEngineering.SteamworksIntegration.SteamSettings
+    - HeathenEngineering.SteamworksIntegration.SteamworksBehaviour
     Unity.InputSystem:
     - UnityEngine.InputSystem.InputActionAsset
     - UnityEngine.InputSystem.InputActionReference
@@ -56,8 +79,23 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.LayoutElement
     - UnityEngine.UI.RectMask2D
   serializedClasses:
-    Mirror:
-    - Mirror.SnapshotInterpolationSettings
+    FishNet.Runtime:
+    - FishNet.Component.Transforming.Beta.InitializationSettings
+    - FishNet.Component.Transforming.Beta.MovementSettings
+    - FishNet.Component.Transforming.NetworkTransform/ComponentConfigurationType
+    - FishNet.Component.Transforming.NetworkTransform/SnappedAxes
+    - FishNet.Managing.Transporting.LatencySimulator
+    - FishNet.Object.NetworkObject/PredictionType
+    - FishNet.Object.TransformProperties
+    - FishNet.Serializing.TransformPackingData
+    - FishNet.Utility.Template.TickNetworkBehaviour/TickCallback
+    GameKit.Dependencies:
+    - GameKit.Dependencies.Utilities.Types.FloatRange
+    Heathen.Core:
+    - HeathenEngineering.Events.UnityStringEvent
+    Heathen.Steamworks:
+    - HeathenEngineering.SteamworksIntegration.SteamSettings/GameClient
+    - HeathenEngineering.SteamworksIntegration.SteamSettings/GameServer
     Unity.InputSystem:
     - UnityEngine.InputSystem.InputAction
     - UnityEngine.InputSystem.InputActionMap
@@ -86,6 +124,7 @@ ScriptsOnlyBuild:
     - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
     - UnityEngine.Events.PersistentListenerMode
+    - UnityEngine.Events.UnityEvent
     UnityEngine.TextCoreFontEngineModule:
     - UnityEngine.TextCore.FaceInfo
     - UnityEngine.TextCore.Glyph
@@ -98,15 +137,26 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
     - UnityEngine.UI.SpriteState
+    com.rlabrecque.steamworks.net:
+    - Steamworks.AppId_t
   methodsToPreserve:
   - assembly: Assembly-CSharp
-    fullTypeName: Network.ChatBehaviour
-    methodName: Send
+    fullTypeName: BootstrapManager
+    methodName: GoToMenu
   - assembly: Assembly-CSharp
-    fullTypeName: SteamLobby
-    methodName: HostLobby
+    fullTypeName: MainMenuManager
+    methodName: LeaveLobby
+  - assembly: Assembly-CSharp
+    fullTypeName: MainMenuManager
+    methodName: CreateLobby
+  - assembly: Assembly-CSharp
+    fullTypeName: MainMenuManager
+    methodName: StartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: MainMenuManager
+    methodName: JoinLobby
   sceneClasses:
-    Assets/Scenes/MainScene.unity:
+    Assets/Scenes/BootstrapScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -129,8 +179,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 81
@@ -142,68 +190,212 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1584}
+      Script: {instanceID: 1588}
     - Class: 114
-      Script: {instanceID: 1586}
+      Script: {instanceID: 1888}
     - Class: 114
-      Script: {instanceID: 1644}
+      Script: {instanceID: 2062}
     - Class: 114
-      Script: {instanceID: 1728}
+      Script: {instanceID: 2404}
     - Class: 114
-      Script: {instanceID: 1808}
+      Script: {instanceID: 3122}
     - Class: 114
-      Script: {instanceID: 2440}
+      Script: {instanceID: 3648}
     - Class: 114
-      Script: {instanceID: 3038}
+      Script: {instanceID: 3694}
     - Class: 114
-      Script: {instanceID: 3118}
+      Script: {instanceID: 3740}
     - Class: 114
-      Script: {instanceID: 3290}
+      Script: {instanceID: 4004}
     - Class: 114
-      Script: {instanceID: 3734}
+      Script: {instanceID: 4036}
     - Class: 114
-      Script: {instanceID: 3764}
+      Script: {instanceID: 4368}
     - Class: 114
-      Script: {instanceID: 4210}
+      Script: {instanceID: 4552}
     - Class: 114
-      Script: {instanceID: 4532}
+      Script: {instanceID: 4566}
     - Class: 114
-      Script: {instanceID: 4926}
+      Script: {instanceID: 4950}
     - Class: 114
-      Script: {instanceID: 5058}
+      Script: {instanceID: 5094}
     - Class: 114
-      Script: {instanceID: 5076}
+      Script: {instanceID: 5228}
     - Class: 114
-      Script: {instanceID: 5384}
+      Script: {instanceID: 5410}
     - Class: 114
-      Script: {instanceID: 5424}
+      Script: {instanceID: 5450}
     - Class: 114
-      Script: {instanceID: 5876}
+      Script: {instanceID: 5546}
     - Class: 114
-      Script: {instanceID: 6130}
+      Script: {instanceID: 5632}
     - Class: 114
-      Script: {instanceID: 6394}
+      Script: {instanceID: 5838}
     - Class: 114
-      Script: {instanceID: 7372}
+      Script: {instanceID: 5942}
     - Class: 114
-      Script: {instanceID: 7832}
+      Script: {instanceID: 6238}
     - Class: 114
-      Script: {instanceID: 8324}
+      Script: {instanceID: 6354}
     - Class: 114
-      Script: {instanceID: 8348}
+      Script: {instanceID: 6444}
     - Class: 114
-      Script: {instanceID: 9096}
+      Script: {instanceID: 7076}
     - Class: 114
-      Script: {instanceID: 9778}
+      Script: {instanceID: 7392}
     - Class: 114
-      Script: {instanceID: 26502}
+      Script: {instanceID: 7752}
+    - Class: 114
+      Script: {instanceID: 8294}
+    - Class: 114
+      Script: {instanceID: 8342}
+    - Class: 114
+      Script: {instanceID: 8446}
+    - Class: 114
+      Script: {instanceID: 8478}
+    - Class: 114
+      Script: {instanceID: 9186}
+    - Class: 114
+      Script: {instanceID: 9354}
+    - Class: 114
+      Script: {instanceID: 9888}
+    - Class: 114
+      Script: {instanceID: 10456}
+    - Class: 114
+      Script: {instanceID: 34614}
+    - Class: 114
+      Script: {instanceID: 34978}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
+    - Class: 135
+      Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
+    - Class: 138
+      Script: {instanceID: 0}
     - Class: 143
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    Assets/Scenes/MainMenuScene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1566}
+    - Class: 114
+      Script: {instanceID: 1634}
+    - Class: 114
+      Script: {instanceID: 1776}
+    - Class: 114
+      Script: {instanceID: 3034}
+    - Class: 114
+      Script: {instanceID: 3294}
+    - Class: 114
+      Script: {instanceID: 3670}
+    - Class: 114
+      Script: {instanceID: 5076}
+    - Class: 114
+      Script: {instanceID: 6162}
+    - Class: 114
+      Script: {instanceID: 6444}
+    - Class: 114
+      Script: {instanceID: 7452}
+    - Class: 114
+      Script: {instanceID: 7922}
+    - Class: 114
+      Script: {instanceID: 10502}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/MainScene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1566}
+    - Class: 114
+      Script: {instanceID: 1634}
+    - Class: 114
+      Script: {instanceID: 1704}
+    - Class: 114
+      Script: {instanceID: 3034}
+    - Class: 114
+      Script: {instanceID: 3294}
+    - Class: 114
+      Script: {instanceID: 3670}
+    - Class: 114
+      Script: {instanceID: 6444}
+    - Class: 114
+      Script: {instanceID: 7452}
+    - Class: 114
+      Script: {instanceID: 7922}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -220,12 +412,6 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: b5007673bbbdb9d12597a1d8201370f5
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Text
-  - hash:
-      serializedVersion: 2
       Hash: d41ab9b5ea92474f9c0a6937a0607ce1
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -238,40 +424,16 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
-      Hash: 915204dac8acad99f076d6e72ada0a0f
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Button
-  - hash:
-      serializedVersion: 2
-      Hash: 33f160a5c07e580c29aba2bd1e4db811
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: HorizontalLayoutGroup
-  - hash:
-      serializedVersion: 2
       Hash: 55060a7bf226ac385ce19ebd450f199f
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UIElements
     className: PanelRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 7543be8893674ff902b86dfa84572d02
-    assemblyName: Mirror.Transports
-    namespaceName: Mirror.Transports.Encryption
-    className: EncryptionTransport
-  - hash:
-      serializedVersion: 2
-      Hash: d380d635e0e22ebbc61ed06f20d57af5
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.MultipleMatch
-    className: MatchGUI
-  - hash:
-      serializedVersion: 2
-      Hash: dd9dda1dfd39e605c49e72003342ef5d
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Image
+      Hash: e7c0e694a74bec7dc668cd655acfcd17
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: BootstrapManager
   - hash:
       serializedVersion: 2
       Hash: 0f19765290d81f9e93eff7828a091d40
@@ -280,28 +442,22 @@ ScriptsOnlyBuild:
     className: PlayerInput
   - hash:
       serializedVersion: 2
+      Hash: dd9dda1dfd39e605c49e72003342ef5d
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Image
+  - hash:
+      serializedVersion: 2
       Hash: 8b282befa903720f0d70376e24d43366
     assemblyName: Assembly-CSharp
     namespaceName: DefaultNamespace
     className: MenuViewController
   - hash:
       serializedVersion: 2
-      Hash: d8c8f922a61740be7b14008ed555cb16
-    assemblyName: Mirror.Components
-    namespaceName: Mirror.Discovery
-    className: NetworkDiscoveryHUD
-  - hash:
-      serializedVersion: 2
-      Hash: 48af00177c505dfa350805baeab9368b
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Tank
-    className: TankControllerBase
-  - hash:
-      serializedVersion: 2
-      Hash: a3901985eb076c1c9b7562fca82ca3e0
-    assemblyName: Unity.Timeline
-    namespaceName: UnityEngine.Timeline
-    className: SignalAsset
+      Hash: 9eefee624a6161a32cb08193cd6c864a
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: StringChangeEvent
   - hash:
       serializedVersion: 2
       Hash: f45600bcc886206dd55a3208474aad61
@@ -310,10 +466,16 @@ ScriptsOnlyBuild:
     className: UnityOnScrollbarValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: e46a37f4e879abd4d46fd2b46c080a0a
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Player
-    className: PlayerControllerReliable
+      Hash: a3901985eb076c1c9b7562fca82ca3e0
+    assemblyName: Unity.Timeline
+    namespaceName: UnityEngine.Timeline
+    className: SignalAsset
+  - hash:
+      serializedVersion: 2
+      Hash: f047032636b0877f6214a8bf0bde2880
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: SpritePointerVariable
   - hash:
       serializedVersion: 2
       Hash: 8dff8e9853297d341afa0c11f9091b59
@@ -322,22 +484,16 @@ ScriptsOnlyBuild:
     className: LayoutElement
   - hash:
       serializedVersion: 2
-      Hash: b0598012229ce56f5233330f44ff2514
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Flyer
-    className: FlyerControllerReliable
+      Hash: 12024b8004a66e9c8943df2f8f164d62
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: CameraPointerListVariable
   - hash:
       serializedVersion: 2
-      Hash: 312f1a1cca70a349ac4ab5518b32cf60
-    assemblyName: Mirror.Transports
-    namespaceName: kcp2k
-    className: ThreadedKcpTransport
-  - hash:
-      serializedVersion: 2
-      Hash: d5acae2ebd048f5399efac019174e7bc
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.AdditiveLevels
-    className: AdditiveLevelsNetworkManager
+      Hash: e39b696af0974c9220ead54cddf50097
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.IntermediateLayers
+    className: IntermediateLayerCipher
   - hash:
       serializedVersion: 2
       Hash: 00bbd9db8634496d079d17711b2ff7c4
@@ -346,10 +502,10 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: d4a12e6ffe310f1247aa9e3c4c469872
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkRigidbodyUnreliable2D
+      Hash: 8c23f208dd27f17680d6de19906356d1
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: DoubleChangeEvent
   - hash:
       serializedVersion: 2
       Hash: d0caa48b5fe6778ce3f0de7aec45c4e6
@@ -370,22 +526,16 @@ ScriptsOnlyBuild:
     className: VirtualMouseInput
   - hash:
       serializedVersion: 2
+      Hash: 3ee951562e7177f246fd882ed5ac9c40
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Prediction
+    className: NetworkTrigger
+  - hash:
+      serializedVersion: 2
       Hash: 8703b6ae2b0eefd9dafbc44d8d333fb1
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Shadow
-  - hash:
-      serializedVersion: 2
-      Hash: 93069b9958d7fdeb87540a358c9c7967
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.RigidbodyBenchmark
-    className: RigidbodyBenchmarkNetworkManager
-  - hash:
-      serializedVersion: 2
-      Hash: 888e4d8825b068c8171ae694f12254e0
-    assemblyName: Mirror.Transports
-    namespaceName: Mirror
-    className: LatencySimulation
   - hash:
       serializedVersion: 2
       Hash: f778e23b6ff26b8de4721be0eb1fa240
@@ -394,22 +544,34 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionStayMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 4c6fc1b5f12d93d0e5b0ee33d34812a5
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Player
-    className: PlayerControllerUI
+      Hash: 9e9d98fae6ad2372d69cfcddeb7f55dc
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Utility
+    className: PingDisplay
   - hash:
       serializedVersion: 2
-      Hash: 80bf0c69f4ff712255c9c2125de0d5f9
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.TopDownShooter
-    className: NetworkTopDown
+      Hash: bff3348f505a22f1fd96a38c45d427f8
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: Vector3Variable
   - hash:
       serializedVersion: 2
-      Hash: 89d26a4a43e0c1cba1a722d8e37f6336
-    assemblyName: Mirror.Transports
-    namespaceName: Mirror
-    className: TelepathyTransport
+      Hash: 7468e6901826e523faa884ff5ea0ecc3
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: ColorChangeEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: 451836c9cc747957f4d72f0495a14f6d
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: TriggerStaySender
+  - hash:
+      serializedVersion: 2
+      Hash: 4274fcfeed011a0ec501fa74f91ea8a0
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Editing
+    className: NetworkManagerEditor
   - hash:
       serializedVersion: 2
       Hash: f854af586011dd194574f89546642e29
@@ -424,40 +586,70 @@ ScriptsOnlyBuild:
     className: SimpleScript
   - hash:
       serializedVersion: 2
-      Hash: e4cc047c73fb25ea2844071b17729859
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CouchCoop
-    className: CouchPlayerManager
+      Hash: 9f52937926d7c15be27eaf410bf7dd97
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: BoolGameEvent
   - hash:
       serializedVersion: 2
-      Hash: 162d5ef242da28affdd73ff4b7d91bbb
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkStatistics
+      Hash: 3a68ef03f6da457bcaba78cdfd2277fa
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: FriendGroup
   - hash:
       serializedVersion: 2
-      Hash: e015776da795e7430f0f7cf67522bec4
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CouchCoop
-    className: MovingPlatform
+      Hash: 3c96f9182a8abb54df4d4d35dfdd66f3
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: SteamworksBehaviour
   - hash:
       serializedVersion: 2
-      Hash: 98eeb901ae598eccb45ed9bbda26075b
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.MultipleAdditiveScenes
-    className: MultiSceneNetManager
+      Hash: 6bad85a10453ab034576b72d10edc5ec
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: OverlayManager
   - hash:
       serializedVersion: 2
-      Hash: a4006dfaf65bec8fbbb320da6fe0a96c
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.LagCompensationDemo
-    className: ServerCube
+      Hash: 6660afa1810958ae130ef8b67277d3b4
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Float2ChangeEvent
   - hash:
       serializedVersion: 2
-      Hash: 6cecbcba15361ebd6e5251593c1e2bbd
-    assemblyName: Mirror.Transports
-    namespaceName: Edgegap
-    className: EncryptionTransportInspector
+      Hash: 8e2d93de692b1c278a24aac4373172f3
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: GameObjectPointerListVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 67bc5e44b4935b89a85c407ac4e7dd6c
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.Types.CanvasContainers
+    className: ResizableContainer
+  - hash:
+      serializedVersion: 2
+      Hash: 6bf1cdf2f74715d36f1cd5b294e3666e
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: Vector2IntListVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 3dc67d83830031fcaa68434177ecc1bf
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Transporting.Yak
+    className: Yak
+  - hash:
+      serializedVersion: 2
+      Hash: 92192eb590b2a8ea775c6234faf4fa96
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: StringGameEvent
+  - hash:
+      serializedVersion: 2
+      Hash: 5d31354de163b6fb6c50ab5321326b3f
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: FloatListVariable
   - hash:
       serializedVersion: 2
       Hash: b12640dfdb5966813e9dd838893e6c4a
@@ -466,10 +658,28 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerEnterMessageListener
   - hash:
       serializedVersion: 2
+      Hash: f7e1045a1cf36cf91b4100b426364418
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Editing
+    className: FishNetGettingStartedEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 62add6a86d4a9a3092e9c7f03a3a87f8
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.ObjectPooling.Examples
+    className: Projectile
+  - hash:
+      serializedVersion: 2
       Hash: 0c6de72eaf8c1070da824268c4bfad9d
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 30531ae7a827d6681d702e9d1b41e357
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: IntStatObject
   - hash:
       serializedVersion: 2
       Hash: ad49e20f31ed572e586aa8bbaafb591b
@@ -478,10 +688,16 @@ ScriptsOnlyBuild:
     className: UnityOnDropMessageListener
   - hash:
       serializedVersion: 2
-      Hash: edd8611e1ee30f40c49b6e9305a17c57
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Hex2D
-    className: Hex2DNetworkManager
+      Hash: ececacddf7fd0ee711660acb2c37fdf4
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Server.Editing
+    className: ServerManagerEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 8162055909d038df3390ab09f49779dd
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.ColliderRollback
+    className: ColliderRollback
   - hash:
       serializedVersion: 2
       Hash: 1bc6ff8d02d2d68019aa6a028f8d409d
@@ -508,22 +724,22 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreakMessageListener
   - hash:
       serializedVersion: 2
-      Hash: ad8e06b00791eba1486963c42bf856fb
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkPingGraph
+      Hash: 1f78540fc23e9e192972497632571060
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Vector2ChangeEventListener
   - hash:
       serializedVersion: 2
-      Hash: 20ffc5fb3cff88e156c08e6b097ef6f8
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common
-    className: CanvasNetworkManagerHUD
+      Hash: 00fac2115f214d931c0c71bcd12b75b8
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.Prediction.CharacterControllers
+    className: MovingPlatform
   - hash:
       serializedVersion: 2
-      Hash: 9808502c07b4dfa4be306796148991ba
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: SpatialHashing3DInterestManagement
+      Hash: b4b3504e84d0c8e6a4e3e771cb1e3ccc
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: TransformPointerVariable
   - hash:
       serializedVersion: 2
       Hash: 1ab136900c0edaeeb49424c852595030
@@ -532,46 +748,64 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 7247d63bdaaccef4b97f9750856e6946
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.TopDownShooter
-    className: EnemyTopDown
+      Hash: 8c95c14bcdce42631ac90f9eeadf4a58
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.ColliderRollbacks
+    className: DestroyAfterDelay
   - hash:
       serializedVersion: 2
-      Hash: a455195a7261d1d3124f9ebbc3bb1d05
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Tank
-    className: TankTurretReliable
+      Hash: 9fbceb8499dda1eeedeb6295b6dcdf82
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: ComponentPointerVariable
   - hash:
       serializedVersion: 2
-      Hash: e37e2c6646260ec6079fb1a1248b0698
-    assemblyName: Mirror.Examples
-    namespaceName: StinkySteak.NetcodeBenchmark
-    className: BaseGUIGame
+      Hash: a99d226a67be98a8efb6ba269adc3441
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: ColliderGameEventListener
   - hash:
       serializedVersion: 2
-      Hash: 8489d775d112af5c414408e652c140b8
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Benchmark
-    className: PlayerMovement
+      Hash: 25f656e6f3306e85bc99f37d1a19129f
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: SteamGameServerEvents
   - hash:
       serializedVersion: 2
-      Hash: 8e5f08dfc3d390b4f0e4eeda5e97dbf7
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CharacterSelection
-    className: CanvasReferencer
+      Hash: f757cfa509eaece7a9816548f2ad26b6
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: SetUserIdInputField
   - hash:
       serializedVersion: 2
-      Hash: c7f1b6da210324e6f24160a053d69735
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: LagCompensator
+      Hash: a111838a85aaffbb92994a5188169173
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Int3GameEventListener
   - hash:
       serializedVersion: 2
-      Hash: 92b1b8a3ae835fdbd7f0c6618527c52a
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.AdditiveLevels
-    className: LookAtMainCamera
+      Hash: b921e3348701195db4de2d9e80fb2f2a
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: UnsignedIntGameEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: a04b09c6c96834a9125d461f4fffa7c4
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: CanvasPointerListVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 72dc4f88c0c8bb4f0004bfaee2d50dfa
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Transforming.Editing
+    className: NetworkTransformEditor
+  - hash:
+      serializedVersion: 2
+      Hash: d7110bb335d03a585f7d46c5600bcb41
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.Scened
+    className: SceneUnloaderExample
   - hash:
       serializedVersion: 2
       Hash: 1321993db8249e1e05e1e0492b2bbdc3
@@ -580,22 +814,40 @@ ScriptsOnlyBuild:
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: cc3781a8098ae5faf2c1fbbf75572460
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Tank
-    className: TankControllerHybrid
+      Hash: d847687248e64abb9aba54ab2c5cba9b
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: IntGameEventListener
   - hash:
       serializedVersion: 2
-      Hash: 63614e7eb29dae2cdbba43c0be58b8ab
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CharacterSelection
-    className: CharacterSelection
+      Hash: 415b9d5a70b93772ee4db43e9b64c9c7
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: QuaternionChangeEventListener
   - hash:
       serializedVersion: 2
-      Hash: adb5afafb1eec572e0104b359f0a2bce
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.BilliardsPredicted
-    className: RedBallPredicted
+      Hash: ddf3d63546e42abb4ac39f15e2683384
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: LongListVariable
+  - hash:
+      serializedVersion: 2
+      Hash: f23f2a2ad31c09d9f0262ff0cc664117
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: StringGameEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: 51d474ab212336a6821377d08141427f
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.ObjectPooling.Examples
+    className: ProjectileSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: aa7a644aebb66a2b966c502d0fcb6cf5
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Float2GameEvent
   - hash:
       serializedVersion: 2
       Hash: c9b1ea3bf987a2e780a24849503ca72e
@@ -634,10 +886,22 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionEnterMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 1b97e4370b952e31e75b18da18ace4c7
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.Prediction.CharacterControllers
+    className: StaminaCanvas
+  - hash:
+      serializedVersion: 2
       Hash: 7e12302f66e3c8ed5bcfea4ce65fccea
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: a9595e801c4f79624d3f9a210d29f4d4
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Float3GameEvent
   - hash:
       serializedVersion: 2
       Hash: 7092eed34994bf87f12d395777c64809
@@ -652,10 +916,34 @@ ScriptsOnlyBuild:
     className: TMP_TextSelector_A
   - hash:
       serializedVersion: 2
+      Hash: 03562b41662b4ac3950e8fa22ec17d2e
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: SetAchievementName
+  - hash:
+      serializedVersion: 2
+      Hash: 4773991192a82aaac45904d407cf2c02
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: RectTransformPointerVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 1fb48a14718e40a2cd0f1f2364e2a3ad
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: UGUISetUserName
+  - hash:
+      serializedVersion: 2
       Hash: fce9b835d1e8b08e7ecea8da19f21986
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: CoroutineRunner
+  - hash:
+      serializedVersion: 2
+      Hash: 69f2e207560747da235276ecd47bc499
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Transporting.Multipass
+    className: Multipass
   - hash:
       serializedVersion: 2
       Hash: 6ddf94363c6ce4b02d9fdd51290cb0f9
@@ -664,10 +952,22 @@ ScriptsOnlyBuild:
     className: TestRunCallbackListener
   - hash:
       serializedVersion: 2
+      Hash: 23359d04f1a684ad14b843429de5cb4b
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: StringVariable
+  - hash:
+      serializedVersion: 2
       Hash: 5a4aa2850fe11587f47e34c270c7fd22
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 4ea48c49f2c6d7758dea6655f83ac16f
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Client
+    className: ClientManager
   - hash:
       serializedVersion: 2
       Hash: 3b5263a98bcc71d9a9d1d78a31b34ced
@@ -694,6 +994,12 @@ ScriptsOnlyBuild:
     className: UnityOnButtonClickMessageListener
   - hash:
       serializedVersion: 2
+      Hash: f604c8bbe10fa34a4e9b5697286d9e04
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Client.Editing
+    className: ClientManagerEditor
+  - hash:
+      serializedVersion: 2
       Hash: bf40c7a9dc15bc219687c9838aa9b41f
     assemblyName: UnityEngine.TestRunner
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -706,16 +1012,28 @@ ScriptsOnlyBuild:
     className: UnityOnInputFieldEndEditMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 775c9e306e4947f680538caaec62ba36
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Tank
-    className: TurretUI
+      Hash: 8882e91e9c2ad4617a478f16da53641f
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: HeathenUIBehaviour
   - hash:
       serializedVersion: 2
-      Hash: 099f966c9cd908decb8834d0b2bdf43f
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.AdditiveScenes
-    className: AdditiveNetworkManager
+      Hash: 336ae1e1d108fe8328ffb809d93fb529
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: UnsignedLongGameEvent
+  - hash:
+      serializedVersion: 2
+      Hash: bb124eb065fbb33883a97f047713159d
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Predicting
+    className: PredictionManager
+  - hash:
+      serializedVersion: 2
+      Hash: 30a9feaeb7fc8d1b357a4561366ee305
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: BoolVariable
   - hash:
       serializedVersion: 2
       Hash: b98001682cba83786775c9e415b89a61
@@ -724,10 +1042,16 @@ ScriptsOnlyBuild:
     className: UnityOnDropdownValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 40d800abb6133fd5368f6b50ab234d69
-    assemblyName: Mirror.Transports
-    namespaceName: Mirror
-    className: MultiplexTransport
+      Hash: 08c24f5e03bb6aa7570fcaae0782cdbd
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: HeathenBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: 855bb3419890c5153b447024b0494539
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: BasicFriendInviteButton
   - hash:
       serializedVersion: 2
       Hash: b838cbada0b03f1cfbaebc8e124f4f39
@@ -748,22 +1072,16 @@ ScriptsOnlyBuild:
     className: ToggleGroup
   - hash:
       serializedVersion: 2
-      Hash: e89b74e7f3ed5e39936d50986c014e40
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: PredictedRigidbodyPhysicsGhost
+      Hash: f3d82398e4279229bfd93d105a470262
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.UX
+    className: ScriptableTag
   - hash:
       serializedVersion: 2
-      Hash: 24959af9e2e4afd668366b0ba2df5b2b
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Tank
-    className: TankControllerUnreliable
-  - hash:
-      serializedVersion: 2
-      Hash: 3f4f8f0403fd7efe2b16478dbf3a7cbd
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Tank
-    className: TankControllerReliable
+      Hash: bf2a6c2639a02c6341389a8f9b7dc3c7
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.HashGrid
+    className: MoveRandomly
   - hash:
       serializedVersion: 2
       Hash: 593a641cd7822a10b9a54aa9eb5c3d5e
@@ -772,46 +1090,28 @@ ScriptsOnlyBuild:
     className: Benchmark04
   - hash:
       serializedVersion: 2
-      Hash: 69c1a3401da6153e582f2dac51b131b4
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Flyer
-    className: FlyerControllerBase
+      Hash: 915204dac8acad99f076d6e72ada0a0f
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Button
   - hash:
       serializedVersion: 2
-      Hash: 0aef4c4a367b5dfbb382438229c9ec08
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers
-    className: ControllerUIBase
-  - hash:
-      serializedVersion: 2
-      Hash: 2f4b3ff7b22152654c62f226c7fa3eea
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.BenchmarkIdle
-    className: Npc
-  - hash:
-      serializedVersion: 2
-      Hash: 7a9da03c1c5568ddc68bd58b037718df
-    assemblyName: Mirror.Components
-    namespaceName: Mirror.Discovery
-    className: NetworkDiscovery
-  - hash:
-      serializedVersion: 2
-      Hash: 520c4311891591f525d024c4ef77c7d2
-    assemblyName: Assembly-CSharp
-    namespaceName: Network
-    className: NetworkManagerEnhanced
-  - hash:
-      serializedVersion: 2
-      Hash: 2b9f4a8d7835016174c32486b37dd18c
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common
-    className: FaceCamera
+      Hash: e4127c552bbb6a89fafee28002e9a5d0
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Observing
+    className: ObserverManager
   - hash:
       serializedVersion: 2
       Hash: bbf90c7b0547a7034e21e211215418cc
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerMovement
+  - hash:
+      serializedVersion: 2
+      Hash: 4ed9009cab5ae7182ef072c240173760
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Transforming.Beta
+    className: OfflineTickSmootherEditor
   - hash:
       serializedVersion: 2
       Hash: d90629714fa6b0145fcaffc87f5c6559
@@ -826,16 +1126,10 @@ ScriptsOnlyBuild:
     className: UnityOnMouseDownMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 4d776b76bc93b0f0e8c487ab7a79ba4c
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.MultipleMatch
-    className: PlayerGUI
-  - hash:
-      serializedVersion: 2
-      Hash: 6f7e2cde5c76922626dcf05e6f325ebb
-    assemblyName: Mirror
-    namespaceName: Mirror
-    className: NetworkManager
+      Hash: 06e25674704556b5f0d740b07269abbd
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: GameEvent
   - hash:
       serializedVersion: 2
       Hash: b6307dfc54cca9ba44f47185c578b0ce
@@ -844,10 +1138,10 @@ ScriptsOnlyBuild:
     className: UnityOnMouseDragMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 715f7928b39881049ce8c46350cb8681
-    assemblyName: Unity.VisualScripting.Core
-    namespaceName: Unity.VisualScripting
-    className: UnityOnTransformParentChangedMessageListener
+      Hash: 6c2f5cb441bff36476e2c5432b184b23
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Float3ChangeEvent
   - hash:
       serializedVersion: 2
       Hash: d7c8092511063e0dae8106bfc8ed63dd
@@ -856,28 +1150,34 @@ ScriptsOnlyBuild:
     className: UnityOnScrollMessageListener
   - hash:
       serializedVersion: 2
-      Hash: fd6064f4eb6b07d9437959b42403d524
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.BilliardsPredicted
-    className: Pockets
+      Hash: 715f7928b39881049ce8c46350cb8681
+    assemblyName: Unity.VisualScripting.Core
+    namespaceName: Unity.VisualScripting
+    className: UnityOnTransformParentChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 3ffd38ae8ba6e78da8cc4154e026adb9
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Player
-    className: PlayerControllerRBReliable
+      Hash: e7b0268882820ac882fa94c8ac5269a1
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Observing
+    className: MatchCondition
   - hash:
       serializedVersion: 2
-      Hash: db046bfab55d263792da5038698750d3
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.SyncDir
-    className: Player
+      Hash: ea84d92886972657d2fd975eb4f1089a
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Editing
+    className: DebugManagerEditor
   - hash:
       serializedVersion: 2
-      Hash: b10fb1c52525ace7e6f4a992ab72a910
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Tank
-    className: TankTurretUnreliable
+      Hash: cb711603ea594b5f21803af234d3dbc6
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Transforming
+    className: DetachableNetworkTickSmoother
+  - hash:
+      serializedVersion: 2
+      Hash: b171865dfd6f9746ec142b1e8cbed88e
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Int2GameEvent
   - hash:
       serializedVersion: 2
       Hash: 86344100c716167fb86137c127ca9eee
@@ -886,22 +1186,34 @@ ScriptsOnlyBuild:
     className: InputActionImporterEditor
   - hash:
       serializedVersion: 2
+      Hash: 9273d1259513cd4ba40f359ebdbf5d53
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: UnsignedIntListVariable
+  - hash:
+      serializedVersion: 2
       Hash: c6369b4cc3be620d6c9300e920bc3d52
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: VariablesAsset
   - hash:
       serializedVersion: 2
-      Hash: a72bd09bfabc17b978058ac8392fd55f
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.LagCompensationDemo
-    className: ClientCube
+      Hash: fe86edee29fe55602e7868febbcd67ff
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: QuaternionChangeEvent
   - hash:
       serializedVersion: 2
-      Hash: 7f1b5151c0a44ae7aa745124e5161006
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Flyer
-    className: FlyerControllerUI
+      Hash: 5838ec6bd094b15476cc62b54a58cf46
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Observing
+    className: NetworkObserver
+  - hash:
+      serializedVersion: 2
+      Hash: 745781a3a425e774f1960f4f42c58283
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.ComponentStateSync
+    className: ComponentSyncStateBehaviour
   - hash:
       serializedVersion: 2
       Hash: 7bdff9e91edfd9600f92a185def7e34a
@@ -910,16 +1222,34 @@ ScriptsOnlyBuild:
     className: ScriptMachine
   - hash:
       serializedVersion: 2
+      Hash: b16749b288ee9a42b4affc22534c6ce4
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Object
+    className: DefaultPrefabObjects
+  - hash:
+      serializedVersion: 2
+      Hash: a5bcd3b5f490220bd0f15348a2147749
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Scened
+    className: DefaultSceneProcessor
+  - hash:
+      serializedVersion: 2
       Hash: 43ebd945b04bced376c791411cf5a289
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSelectMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 3566808ed206894310afb229a7ce1fb7
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkTransformUnreliable
+      Hash: 99515b9f2a48bcc650d1d5c790e3b17a
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Scenes
+    className: DefaultScene
+  - hash:
+      serializedVersion: 2
+      Hash: e6133a7e49d60855aee4114b9646bcc1
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.ColliderRollbacks
+    className: PlayerCamera
   - hash:
       serializedVersion: 2
       Hash: 5b8b7230ad968399f6726aa1269dcdcb
@@ -940,24 +1270,6 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: df749fb9551b6d394651a91c20a8ea89
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Pong
-    className: Player
-  - hash:
-      serializedVersion: 2
-      Hash: 48b929b1fe4f45977328fad59b6020df
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: SteamLobby
-  - hash:
-      serializedVersion: 2
-      Hash: 994e15074701d4c72d6fad07daa87d0f
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common
-    className: RandomColor
-  - hash:
-      serializedVersion: 2
       Hash: 418b67019f13f9684552f2693bae3971
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
@@ -970,16 +1282,22 @@ ScriptsOnlyBuild:
     className: UnityOnControllerColliderHitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 87aaac56d9435ebdc3ab3fe44f5209c4
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.PickupsDropsChilds
-    className: SceneObject
+      Hash: 6229bbf2b5215a831420b770cfad79d9
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Observing.Editing
+    className: ObserverManagerEditor
   - hash:
       serializedVersion: 2
-      Hash: ed6fc1cad6c091f08bfaf4ebb69e348e
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: HexSpatialHash3DInterestManagement
+      Hash: f87c8e1770e0c0d593abf457459861b1
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Utility
+    className: BandwidthDisplay
+  - hash:
+      serializedVersion: 2
+      Hash: 39ae1ee8c12cf16bcbc2ff217e5e746c
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: AnimationCurveVariable
   - hash:
       serializedVersion: 2
       Hash: 960935b102b3064f4b924de16426e340
@@ -988,10 +1306,10 @@ ScriptsOnlyBuild:
     className: TextMeshPro
   - hash:
       serializedVersion: 2
-      Hash: e3caf8c564c94af6b7482053e431be48
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Hex2D
-    className: Hex2DPlayer
+      Hash: c9919cded681ca732c90107344947120
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: CollisionGameEventListener
   - hash:
       serializedVersion: 2
       Hash: b2d2a01a2a85d9ed12e80cb33a9a6044
@@ -1006,16 +1324,22 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionExit2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 16ac42c838ef6f0595df6b0103ada22e
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: SceneInterestManagement
+      Hash: 11b29f8ba6ee79ddd62272bda04c81a4
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: SteamSettings
   - hash:
       serializedVersion: 2
-      Hash: 9ff4a782eef869dfb358bfa61fde97bf
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.TopDownShooter
-    className: CameraTopDown
+      Hash: 6d588ab10408d1d1a516a0bcb89fdcc0
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Transporting
+    className: NetworkWriterLoop
+  - hash:
+      serializedVersion: 2
+      Hash: 480efb384238ffd7143813fc8e2d18a3
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: ImageTypePointerVariable
   - hash:
       serializedVersion: 2
       Hash: 0a3f328f3ea906bbbcf794f4c27ee59d
@@ -1024,10 +1348,10 @@ ScriptsOnlyBuild:
     className: ScriptGraphAsset
   - hash:
       serializedVersion: 2
-      Hash: 4c7a0fd18969f5e48a9a7de121264a7e
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.TankTheftAuto
-    className: TankAuthority
+      Hash: 934db60b7e4a413f94c88386f887a89d
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Object
+    className: EmptyNetworkBehaviour
   - hash:
       serializedVersion: 2
       Hash: 42284ecb06b05bfc619be3758fa5dd7a
@@ -1036,16 +1360,16 @@ ScriptsOnlyBuild:
     className: InputActionAsset
   - hash:
       serializedVersion: 2
+      Hash: 320679aee44a4d2f2291e6dc624d26bc
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Animating.Editing
+    className: NetworkAnimatorEditor
+  - hash:
+      serializedVersion: 2
       Hash: 72561d2e822b466169cd12a3b9f9ae0c
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: VertexShakeB
-  - hash:
-      serializedVersion: 2
-      Hash: db0b6e3028edad1069fc48ee26cd08e3
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common
-    className: FPS
   - hash:
       serializedVersion: 2
       Hash: fb79e95da8891fc7ac6c36ca6967af23
@@ -1054,22 +1378,40 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
+      Hash: ae5d764c38a7257581a0501f4ce8e865
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.AdditiveScenes
+    className: ServerScenePrewarmer
+  - hash:
+      serializedVersion: 2
+      Hash: 93cb2271f9f0607498d6da30e5a6742e
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: CollisionGameEvent
+  - hash:
+      serializedVersion: 2
       Hash: 552dca338f20933ce362ebbe559a6aa6
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 816373233fcc1b6380b2a166a8412564
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: SceneDistanceInterestManagement
+      Hash: 4d3f9eec5ad62121476a6a416667eff6
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: SetAchievementDescription
   - hash:
       serializedVersion: 2
-      Hash: 8751ba4a82568e9a32d19e994627219c
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.TopDownShooter
-    className: CanvasTopDown
+      Hash: 539ecdba17de87bbfc3e50cc5895cb47
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.Scened
+    className: SceneLoaderExample
+  - hash:
+      serializedVersion: 2
+      Hash: 58de214ba474450d719f4878bf1c19ed
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.HashGrid
+    className: GridSpawner
   - hash:
       serializedVersion: 2
       Hash: 1deda86fe7ffd8587afcfe68a02d034c
@@ -1082,6 +1424,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.UI.Editor
     className: StandaloneInputModuleModuleEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 22d5a3ffdb6698c6cf28ad342213f2d6
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Int4GameEvent
   - hash:
       serializedVersion: 2
       Hash: 665da785348a8806bf1524fe10742a60
@@ -1102,10 +1450,10 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: 1575520517bf26fb0990499f4c5e2295
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Benchmark
-    className: MonsterMovement
+      Hash: 242a922ad152998b4ff3be85cc6fe5c1
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Transforming.Beta
+    className: OfflineTickSmoother
   - hash:
       serializedVersion: 2
       Hash: 164a37e0bc379311785dd54beac44331
@@ -1114,22 +1462,28 @@ ScriptsOnlyBuild:
     className: InputDebuggerWindow
   - hash:
       serializedVersion: 2
-      Hash: a998279c0f449300c756e1f64a8c8c4b
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Tank
-    className: TankTurretBase
+      Hash: 7085de32035b1949075cb212d73bb081
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: FriendList
   - hash:
       serializedVersion: 2
-      Hash: 284263833634d09b66dfdaf643431a08
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: GUIConsole
+      Hash: d940da845f7d0c0751cd4120a985f09d
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Object.Editing
+    className: NetworkObjectEditor
   - hash:
       serializedVersion: 2
-      Hash: 4b674bac6c9ceaec15f09e2a6b4695aa
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.PredictionBenchmark
-    className: PlayerForce
+      Hash: 4512ca29ca2029cf9124aa891b991d45
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: BoolChangeEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: 75d2b248d3c5f7b25138f3df3edbd591
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: Vector4Variable
   - hash:
       serializedVersion: 2
       Hash: 32bfadf4ab14c1e4298d945ac7dbee8f
@@ -1144,6 +1498,12 @@ ScriptsOnlyBuild:
     className: TrackedDeviceRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 97972c27f7c586c4429ed3761929c645
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: TransformPointerListVariable
+  - hash:
+      serializedVersion: 2
       Hash: 4718916586b3818eb69bf65df61f0f3a
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1156,22 +1516,34 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: 0552d96422b12dd5e88485d01e871935
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.AdditiveLevels
-    className: Portal
-  - hash:
-      serializedVersion: 2
       Hash: 682dfc653b22feea53b38adb3bc66414
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
   - hash:
       serializedVersion: 2
-      Hash: e8119c0614d239de8af555e1e4ce0bfa
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CharacterSelection
-    className: SceneCamera
+      Hash: be74b65567da98493438533d1c2515c7
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: AchievementObject
+  - hash:
+      serializedVersion: 2
+      Hash: 7c6bd0c966038a12722e57c8f07e4349
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: CollisionExitSender
+  - hash:
+      serializedVersion: 2
+      Hash: cd07fc43d4a030c63895357e503200de
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: IntListVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 02ba997a4b6949b038b5af9f6b4587c6
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Vector3ChangeEventListener
   - hash:
       serializedVersion: 2
       Hash: c78ed13f6b5a632d70d4f73f56ad81f2
@@ -1192,22 +1564,16 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 31e69b1319c56f37cd66f311f13d99b2
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.TopDownShooter
-    className: RespawnPortal
-  - hash:
-      serializedVersion: 2
       Hash: 1a680d9a08de79b0d2c779e78c9843b4
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: RectMask2D
   - hash:
       serializedVersion: 2
-      Hash: 2b47eb40b765836010be1eb58af5d1c9
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.PredictionBenchmark
-    className: RandomForce
+      Hash: 6d848fd1e79a415c13a579e8342f93c5
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Utility.Performance
+    className: DefaultObjectPool
   - hash:
       serializedVersion: 2
       Hash: c933b590b3badb5918fa01e73cd5cc0c
@@ -1216,10 +1582,16 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
-      Hash: 9b99f973913a94704384084dd84a0a00
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.SnapshotInterpolationDemo
-    className: ServerCube
+      Hash: 1237473ffe4b93518730b9093e5eadb7
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Debugging
+    className: DebugManager
+  - hash:
+      serializedVersion: 2
+      Hash: 679461373dd8094c93248f40038aff5c
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: IntChangeEvent
   - hash:
       serializedVersion: 2
       Hash: ca7965796a6fc0e5baad4cb19f5b5ded
@@ -1234,16 +1606,22 @@ ScriptsOnlyBuild:
     className: CameraController
   - hash:
       serializedVersion: 2
-      Hash: 9a3d222fb6ce3b7e65faf63e5c0aae2d
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Player
-    className: PlayerControllerUnreliable
+      Hash: c805cf76c4df39e097d645fb484b86a2
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Logging
+    className: LevelLoggingConfiguration
   - hash:
       serializedVersion: 2
-      Hash: c2c3192a7b2c13e7c3966f7d3476968c
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.EdgegapLobby
-    className: UILobbyStatus
+      Hash: 64b609dd783d845b31cfcd71ee1a0d55
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: UnsignedIntChangeEvent
+  - hash:
+      serializedVersion: 2
+      Hash: c7e9000ae0cbd7034e0fefc2356c7991
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Scened
+    className: SceneManager
   - hash:
       serializedVersion: 2
       Hash: 9ebc0a3016506a0cbb7e0306dfcb9497
@@ -1252,34 +1630,34 @@ ScriptsOnlyBuild:
     className: DictionaryAsset
   - hash:
       serializedVersion: 2
-      Hash: ddd9105d9fca230eaef55734c6106808
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: ToggleHotkey
+      Hash: ebd8aea2ac8dc16bb3a80b5d765d8678
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Transforming.Beta
+    className: NetworkTickSmoother
   - hash:
       serializedVersion: 2
-      Hash: e53462416529b42e14aed55a5e4e2dc9
-    assemblyName: Mirror.Transports
-    namespaceName: Edgegap
-    className: LobbyServiceCreateDialogue
+      Hash: 49ab030b7197364033fdd15e685e7d39
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: ImageFillMethodPointerVariable
   - hash:
       serializedVersion: 2
-      Hash: 51777a93a9479f415d049950085626f8
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.MultipleMatch
-    className: MatchController
+      Hash: 6dd8ae67dfe07e94ae3a34401f0ea1db
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Transporting.Tugboat.Editing
+    className: TugboatEditor
   - hash:
       serializedVersion: 2
-      Hash: e0e06bb367df11d6102e649bc685d71e
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Player
-    className: PerlinNoise
+      Hash: 41355bab5f2046b13e1cde8371660ecf
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Float3GameEventListener
   - hash:
       serializedVersion: 2
-      Hash: 8359e5cff477e8a6bab42ab1b5ec7a1f
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkPingDisplay
+      Hash: 5ce06b5036449a3f9ae08fcf78ca153d
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: BoolChangeEvent
   - hash:
       serializedVersion: 2
       Hash: e7e95903ca66d58e1a7cbd71f824e16d
@@ -1288,58 +1666,46 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: f7bb1284cbeefd590061187a9810b3d4
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CCU
-    className: CCUNetworkManager
-  - hash:
-      serializedVersion: 2
-      Hash: 36055ba5ec9a36a015b3dd1339dc05f9
-    assemblyName: Mirror.Transports
-    namespaceName: Edgegap
-    className: EdgegapKcpTransport
-  - hash:
-      serializedVersion: 2
       Hash: 215d2dc6ec6ea06728398ea39a103cb3
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.OnScreen
     className: OnScreenStick
   - hash:
       serializedVersion: 2
-      Hash: ecac62ce134aaf8995c5c0b97e6ff8cc
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.AdditiveLevels
-    className: FadeInOut
+      Hash: 3678e824920c539ab56e23fab9efd506
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.ColliderRollback
+    className: RollbackManager
   - hash:
       serializedVersion: 2
-      Hash: fd8560e9e03f672a939e2b1bbd65bc16
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkDiagnosticsDebugger
+      Hash: 39e8fdf18db75f119843f610fc7ba04d
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.Prediction.CharacterControllers
+    className: CharacterControllerPrediction
   - hash:
       serializedVersion: 2
-      Hash: 63d4049d2e22f16ffbcdd0082d83f0c5
-    assemblyName: Mirror
-    namespaceName: Mirror
-    className: NetworkIdentity
+      Hash: 9e36cfc1aa554e9cbe71d44ca2a5ab24
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.CustomSyncObject
+    className: StructSyncBehaviour
   - hash:
       serializedVersion: 2
-      Hash: 27bf461205ef61a3d64e271dfede0151
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: RemoteStatistics
-  - hash:
-      serializedVersion: 2
-      Hash: 2d0e431e624b8b457f29896dde2564fa
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Billiards
-    className: WhiteBall
+      Hash: 226f6c8a0334ff66bc5da5b3b8fc8bce
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: UnsignedIntChangeEventListener
   - hash:
       serializedVersion: 2
       Hash: 9078325c2a6f6a2d9612ade897511860
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_SpriteAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 9359b5c545756a3069d1d0ee44e7e73f
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: FloatChangeEventListener
   - hash:
       serializedVersion: 2
       Hash: 96e7bcfd2d072992dab64ac44058b930
@@ -1354,16 +1720,16 @@ ScriptsOnlyBuild:
     className: TMPro_InstructionOverlay
   - hash:
       serializedVersion: 2
-      Hash: 8c173f5740888f15d63886ded58bee49
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkTransformHybrid
+      Hash: 934dd43730bf4a7bbe7fd26784940bbb
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Editing
+    className: ReviewReminderEditor
   - hash:
       serializedVersion: 2
-      Hash: acbdab9fad53b859b1cebb1fd9bf59d1
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkRoomManager
+      Hash: b02bca3e855d3a4d0946ae12fb90f529
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.Prediction.Rigidbodies
+    className: RigidbodyPrediction
   - hash:
       serializedVersion: 2
       Hash: a75a568ce902366f4e82fc98ca6108f5
@@ -1372,22 +1738,10 @@ ScriptsOnlyBuild:
     className: TMP_ExampleScript_01
   - hash:
       serializedVersion: 2
-      Hash: ba8f2e58efb68fe2b9e790964f14c96e
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: HistoryCollider
-  - hash:
-      serializedVersion: 2
-      Hash: bfc884a6a7950241a5e3fec674d0aeda
-    assemblyName: Mirror.Transports
-    namespaceName: Edgegap
-    className: EdgegapLobbyKcpTransport
-  - hash:
-      serializedVersion: 2
-      Hash: a90bda0a5c2c383ee9bfb6dc68dde5aa
-    assemblyName: Mirror
-    namespaceName: Mirror
-    className: NetworkManagerHUD
+      Hash: 73ba891d547595443d677ebc58e0ad0b
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: MaterialPointerVariable
   - hash:
       serializedVersion: 2
       Hash: dc31d211c7459841fe4f406ae2e51480
@@ -1402,10 +1756,16 @@ ScriptsOnlyBuild:
     className: InputDeviceDebuggerWindow
   - hash:
       serializedVersion: 2
-      Hash: 69799763b6ce1ec47536492c168b8cb3
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkAnimator
+      Hash: 6a939887b58c07a671accc6a336af871
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: IntChangeEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: 143e9f4cf5b1173078384912df19f81d
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.Scened
+    className: PlayerController
   - hash:
       serializedVersion: 2
       Hash: ff71db1a48de41d3a8a5ffdfae1ea607
@@ -1420,22 +1780,40 @@ ScriptsOnlyBuild:
     className: ObjectSpin
   - hash:
       serializedVersion: 2
+      Hash: f30a914f6b130d75fbd292d7d97e0caf
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.ComponentStateSync
+    className: AMonoScript
+  - hash:
+      serializedVersion: 2
+      Hash: e38076aa2f90334abd6f81b4eb873ae9
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Object
+    className: SinglePrefabObjects
+  - hash:
+      serializedVersion: 2
       Hash: 7e9cad7f71f9cc52f699bbd2d2a75734
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerClickMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 2d3ae5392663b896b39017135a0009e2
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Tank
-    className: TankControllerUI
+      Hash: f60c4a636ae72990c88d8ed346f12315
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Int4GameEventListener
   - hash:
       serializedVersion: 2
-      Hash: 3404ad3d972eeb6b18ecf04e7afd7993
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Billiards
-    className: RedBall
+      Hash: 5d33cf0cf3cc9cc1b5305186818d19ed
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: IntVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 6ed5840bbb3455837fc26efa7601d688
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.Benchmarks.NetworkTransforms
+    className: MoveRandomlyNonPhysics
   - hash:
       serializedVersion: 2
       Hash: aa349b22cd61b9e8488d736f82590d6b
@@ -1444,52 +1822,34 @@ ScriptsOnlyBuild:
     className: TMP_TextInfoDebugTool
   - hash:
       serializedVersion: 2
-      Hash: ebde2270e17a7a19e2fedc3acef6e5eb
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.TopDownShooter
-    className: CanvasHUD
+      Hash: 8e7e35174b4d80decdd7bd49c5cfb3a2
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.Benchmarks.NetworkTransforms
+    className: PrefabSpawner
   - hash:
       serializedVersion: 2
-      Hash: 0f47d98c3cb5ca5df1a4969253eec160
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CouchCoop
-    className: CameraViewForAll
-  - hash:
-      serializedVersion: 2
-      Hash: d6c613d1767fbbaf51ecda0ea8ae2de1
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Chat
-    className: ChatUI
-  - hash:
-      serializedVersion: 2
-      Hash: 1782602422b28295085261193ff524fd
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.PickupsDropsChilds
-    className: EquippedBat
-  - hash:
-      serializedVersion: 2
-      Hash: ef17c30200f2ce84807e6e14ea71ce3f
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CharacterSelection
-    className: CharacterData
-  - hash:
-      serializedVersion: 2
-      Hash: ba90f4b7bc6033d84a45d7f25358e704
-    assemblyName: Mirror.Authenticators
-    namespaceName: Mirror.Authenticators
-    className: BasicAuthenticator
-  - hash:
-      serializedVersion: 2
-      Hash: f0731684ce0e50d06e81874d2d19ccdc
-    assemblyName: FizzySteamworks
-    namespaceName: Mirror.FizzySteam
-    className: FizzySteamworks
+      Hash: a8dea04cd02dc9476527d08237fb9562
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: UnsignedIntVariable
   - hash:
       serializedVersion: 2
       Hash: 0b63f6d3335e11939ce8790b904c8691
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: ActivationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: a0abb8f6f036a78da654b6465576de0d
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: IntGameEvent
+  - hash:
+      serializedVersion: 2
+      Hash: 936902165881af87ff612480ae8196c6
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.ColliderRollbacks
+    className: Aim
   - hash:
       serializedVersion: 2
       Hash: e402a382f213255c22bda9254dd831b3
@@ -1516,22 +1876,16 @@ ScriptsOnlyBuild:
     className: RemoteInputPlayerConnection
   - hash:
       serializedVersion: 2
-      Hash: 681e0e9eb0baa37b4544ba5f79ff6aa9
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.PickupsDropsChilds
-    className: EquippedBall
-  - hash:
-      serializedVersion: 2
-      Hash: 504c9e747d60e7ab882e353144c64f17
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: HexSpatialHash2DInterestManagement
-  - hash:
-      serializedVersion: 2
       Hash: ceeb6c51b89f022a3deb7b3408c66745
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: TMP_TextEventCheck
+  - hash:
+      serializedVersion: 2
+      Hash: 004b93b5499e5392bbb8469e09f6c43d
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: ColorListVariable
   - hash:
       serializedVersion: 2
       Hash: f2098fcd8ee983a05ec192f63904298f
@@ -1540,22 +1894,16 @@ ScriptsOnlyBuild:
     className: UnityOnEndDragMessageListener
   - hash:
       serializedVersion: 2
+      Hash: d5ebad2316dcfa8afc620094bc091519
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.ColliderRollbacks
+    className: Strafe
+  - hash:
+      serializedVersion: 2
       Hash: db9b308769d19e1f9e161df0392c23ca
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnTransformChildrenChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 09ea33222923e3a4878be89a601fcdb2
-    assemblyName: Mirror.Transports
-    namespaceName: kcp2k
-    className: KcpTransport
-  - hash:
-      serializedVersion: 2
-      Hash: 32da5f3ace71c8564e0a07edef4c68f8
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkTeam
   - hash:
       serializedVersion: 2
       Hash: 6d94138b60a9299798dda96c1ee6725f
@@ -1576,22 +1924,16 @@ ScriptsOnlyBuild:
     className: BaseInputOverride
   - hash:
       serializedVersion: 2
-      Hash: 94cc9e7177022108896c87f6dda39d4a
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Pong
-    className: Ball
+      Hash: 742de62330a4c5c2b459f59b5fa1bc56
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Spawning
+    className: ServerSpawner
   - hash:
       serializedVersion: 2
-      Hash: 853b0a6035c2429e72b1defc102e75cc
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Player
-    className: PlayerControllerHybrid
-  - hash:
-      serializedVersion: 2
-      Hash: 754d89ae8fd7d7612fe39986f73990c7
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.BilliardsPredicted
-    className: WhiteBallPredicted
+      Hash: 666221d02e19b1baef4a4037a2dadb9d
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: BoolGameEventListener
   - hash:
       serializedVersion: 2
       Hash: 47ee34eb8b6021efa0289dbbb17a5a85
@@ -1606,22 +1948,28 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerStayMessageListener
   - hash:
       serializedVersion: 2
-      Hash: df65b530e3fa8f9c8d3cd3e9d6d237a1
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Basic
-    className: PlayerUI
-  - hash:
-      serializedVersion: 2
-      Hash: d72fa55c1ca09331d240713a115f44d1
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: FpsMinMaxAvgGraph
-  - hash:
-      serializedVersion: 2
       Hash: ab3d19695db8289414a06e6d45fd6c8e
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: ShaderPropAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: 0352c29bc0266dfb234cb6029cc91bd7
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: FloatGameEvent
+  - hash:
+      serializedVersion: 2
+      Hash: 14a7a9f0a60e7336f2e8bcec4f7573a0
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Timing.Editing
+    className: TimeManagerEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 5fe44e81a31c750e33a85cbea326ffe1
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: BootstrapNetworkManager
   - hash:
       serializedVersion: 2
       Hash: 10c17b309bdca62b4d7fbaf113ed4ca0
@@ -1630,34 +1978,10 @@ ScriptsOnlyBuild:
     className: Toggle
   - hash:
       serializedVersion: 2
-      Hash: 0597ab4867dbd88910a87645975fe646
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Tanks
-    className: Projectile
-  - hash:
-      serializedVersion: 2
-      Hash: 1d159e2d6808faa568a971fc732b805a
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkLobbyPlayer
-  - hash:
-      serializedVersion: 2
       Hash: 522f6865b4ec12522e602206785309f8
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: GlobalMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 690ab88dfe8574d6ef0b8af3ae36c1b0
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkRigidbodyUnreliable
-  - hash:
-      serializedVersion: 2
-      Hash: 3831fb6d023173932ac77e578cdfb364
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.NetworkRoom
-    className: PlayerScore
   - hash:
       serializedVersion: 2
       Hash: 53e329840e6d03aebec76623c3b054db
@@ -1666,10 +1990,16 @@ ScriptsOnlyBuild:
     className: Slider
   - hash:
       serializedVersion: 2
-      Hash: c9682579242fec9b8cddd0afd08c9078
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Player
-    className: PlayerControllerRBUI
+      Hash: 33f160a5c07e580c29aba2bd1e4db811
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: HorizontalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: b39d73ed78c93eb984d85005037de4cf
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Transforming
+    className: NetworkTransform
   - hash:
       serializedVersion: 2
       Hash: 191cd500c627cd6682ef6f70b8e47f2c
@@ -1690,10 +2020,10 @@ ScriptsOnlyBuild:
     className: WarpTextExample
   - hash:
       serializedVersion: 2
-      Hash: 621bd1eb588dea97661f8c79db98db76
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkBandwidthGraph
+      Hash: eac15dabe0d04cf1377759301f27e6f9
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: GameObjectPointerVariable
   - hash:
       serializedVersion: 2
       Hash: 17f82e3e7d8f8b07a270a4aad9bfe79d
@@ -1702,16 +2032,16 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
-      Hash: 4d682f8d403aa1917d5f5aa8f1e2c4ae
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.EdgegapLobby
-    className: UILobbyList
+      Hash: 59fc7df8915966c2904636b099425fb8
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Prediction
+    className: NetworkCollision2D
   - hash:
       serializedVersion: 2
-      Hash: 464c5b892ea2010bc399ec4a494cb364
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.PredictionBenchmark
-    className: NetworkManagerStackedPrediction
+      Hash: c06efb7a2b1a16973316a9deb6abafe4
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Editing
+    className: ConfigurationEditor
   - hash:
       serializedVersion: 2
       Hash: 0dd14e314956b0d0d83ffcffe60aa46f
@@ -1720,16 +2050,22 @@ ScriptsOnlyBuild:
     className: TMP_DigitValidator
   - hash:
       serializedVersion: 2
-      Hash: 0c81d475d962996df81112b4fd93e345
-    assemblyName: Mirror.Authenticators
-    namespaceName: Mirror.Authenticators
-    className: TimeoutAuthenticator
+      Hash: 608887beaae4c5cb590c6449315b4be4
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Float4GameEventListener
   - hash:
       serializedVersion: 2
-      Hash: d82086405f46de14829f6b4bcbdd8fc9
-    assemblyName: Unity.VisualScripting.Core
-    namespaceName: Unity.VisualScripting
-    className: UnityOnBecameInvisibleMessageListener
+      Hash: 8d6a9285db54f810c5246c7bc47b34d6
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.AdditiveScenes
+    className: Waypoint
+  - hash:
+      serializedVersion: 2
+      Hash: 3e99c92f9e8790bf837ba3ecb89509c0
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Int3GameEvent
   - hash:
       serializedVersion: 2
       Hash: 5874b789cd9832847c61ebfa803213af
@@ -1738,16 +2074,52 @@ ScriptsOnlyBuild:
     className: PanelEventHandler
   - hash:
       serializedVersion: 2
+      Hash: 595f78679226fde70833dbee7abf1b73
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Transforming.Editing
+    className: DetachableNetworkTickSmootherEditor
+  - hash:
+      serializedVersion: 2
+      Hash: d82086405f46de14829f6b4bcbdd8fc9
+    assemblyName: Unity.VisualScripting.Core
+    namespaceName: Unity.VisualScripting
+    className: UnityOnBecameInvisibleMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 94dde34f18ed0fb06b94b106da9b9962
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: RectTransformListVariable
+  - hash:
+      serializedVersion: 2
+      Hash: e6636e0523515ddeb6b2db241aad3bfb
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Animating
+    className: NetworkAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: 9626bdfb54d0e7dd719986e69b4fc1d1
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Transforming.Beta
+    className: NetworkTickSmootherEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 800be08a04348e1dad871a71bde54d2f
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Observing
+    className: HashGrid
+  - hash:
+      serializedVersion: 2
+      Hash: d54eb3790162f7202e09a4b8e65c89ce
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: RichPresenceReader
+  - hash:
+      serializedVersion: 2
       Hash: 9dd54ce33440072d6692a67e0c384ad1
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 41ec1be5dedf74b10ab6df4db5c0da97
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Chat
-    className: Player
   - hash:
       serializedVersion: 2
       Hash: bf0842d88681628b29beb00b5e2ab785
@@ -1756,64 +2128,40 @@ ScriptsOnlyBuild:
     className: UnityOnDeselectMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 95dd997882d70efb5d5fcb18a070b731
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CCU
-    className: Player
+      Hash: b5007673bbbdb9d12597a1d8201370f5
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Text
   - hash:
       serializedVersion: 2
-      Hash: 5751f4563af8864438c53e429c2a8259
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Player
-    className: PlayerControllerBase
+      Hash: 077c8cb3719ad95f001dcf09af1f4822
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.Types.CanvasContainers
+    className: OptionMenuImageButton
   - hash:
       serializedVersion: 2
-      Hash: 74cc4f742239c6cc4ae2161030c163ca
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.RigidbodyBenchmark
-    className: AutoForce
+      Hash: 76aec3b87430dd01dd97f3c76d22b39d
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.Types
+    className: CanvasGroupFader
   - hash:
       serializedVersion: 2
-      Hash: c4c6eebba991744932468da5e6164685
-    assemblyName: Mirror.Examples
-    namespaceName: StinkySteak.MirrorBenchmark
-    className: WanderMoveBehaviour
+      Hash: 1176df5d7bbec1a39feb5e2a7c1bc469
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: RectTransformVariable
   - hash:
       serializedVersion: 2
-      Hash: 66c7a0f7f4cfe1615915211297085302
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Player
-    className: PlayerControllerRBUnreliable
+      Hash: 8fe78563f9efbfcfde591899da5caf80
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Transporting.Tugboat
+    className: Tugboat
   - hash:
       serializedVersion: 2
-      Hash: 76aa07b2d58894482e3d5ff4d45cb1b7
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.AdditiveScenes
-    className: ShootingTankBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: e1fc91914743f6724e020ba02bd14638
-    assemblyName: Mirror.Examples
-    namespaceName: StinkySteak.MirrorBenchmark
-    className: GUIGame
-  - hash:
-      serializedVersion: 2
-      Hash: 7dec983956eecdeebfbffd5a680bfc00
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CCU
-    className: Monster
-  - hash:
-      serializedVersion: 2
-      Hash: e75b58868c85bf863067e8c540e6cf47
-    assemblyName: Mirror.Examples
-    namespaceName: StinkySteak.MirrorBenchmark
-    className: SineMoveYBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: b50ed74cb0dfcb2ba9a500f634a1f432
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.BenchmarkIdle
-    className: BenchmarkIdleNetworkManager
+      Hash: a333c9d01168168c3947864511cbd06d
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: TriggerEnterSender
   - hash:
       serializedVersion: 2
       Hash: 2071f7ac454ae14eafecfd4041edae3a
@@ -1828,16 +2176,58 @@ ScriptsOnlyBuild:
     className: StateGraphAsset
   - hash:
       serializedVersion: 2
+      Hash: 4416c60cffcf395f16715678342a4a66
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: QuaternionVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 5937ab397505c5f3d62be224d409a744
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: CollisionEnterSender
+  - hash:
+      serializedVersion: 2
+      Hash: 8d861e128b74d856858f709d60583a03
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: FloatVariable
+  - hash:
+      serializedVersion: 2
       Hash: 6cf63e9dc888f92a3672d2e4db631c8e
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.Editor
     className: PlayerInputManagerEditor
   - hash:
       serializedVersion: 2
-      Hash: fa868b0877e1d1c83bd85a3a38a62b82
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.MultipleMatch
-    className: RoomGUI
+      Hash: 0f7e2f71e207e1dbf053cbc4a5e64b37
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.Authenticating
+    className: PasswordAuthenticator
+  - hash:
+      serializedVersion: 2
+      Hash: 9a30251b3e33fe234c67cba6e328cbb9
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: UnsignedLongChangeEvent
+  - hash:
+      serializedVersion: 2
+      Hash: 345577170510126852dc83ea390e3946
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: Vector2Variable
+  - hash:
+      serializedVersion: 2
+      Hash: f709a1d6a2ed1ee383ad8888988c3995
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.Types.OptionMenuButtons
+    className: FloatingOptions
+  - hash:
+      serializedVersion: 2
+      Hash: d4a06847a5b3ff4146445bb69043b023
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Transporting
+    className: TransportManager
   - hash:
       serializedVersion: 2
       Hash: 35e0b31791c377513b6fc7b9568c50cd
@@ -1846,16 +2236,46 @@ ScriptsOnlyBuild:
     className: Benchmark02
   - hash:
       serializedVersion: 2
-      Hash: e22304d223a8b546c0470ced30b58fa7
-    assemblyName: Mirror.Transports
-    namespaceName: Edgegap
-    className: RelayCredentialsFromArgs
+      Hash: 8122d0eaca5d9e245675bddd6240f7e5
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: LongGameEventListener
   - hash:
       serializedVersion: 2
-      Hash: 71298275608b41222799b38049273f1d
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Benchmark
-    className: BenchmarkNetworkManager
+      Hash: 851f853a3fe6e793a6bc3136a0204492
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: FloatChangeEvent
+  - hash:
+      serializedVersion: 2
+      Hash: 6388a11f339c77caf7673917fccd4f38
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Float2GameEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: aba6c5a6b60f3c886a698160bcefd2f2
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Observing
+    className: HostOnlyCondition
+  - hash:
+      serializedVersion: 2
+      Hash: 8a395da2a66cb0bf466f7e894b137ae6
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Ownership
+    className: PredictedOwner
+  - hash:
+      serializedVersion: 2
+      Hash: 0912486345b918e0a130bebed83d4ceb
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Editing.NewNetworkBehaviourScript
+    className: CreateNewNetworkBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: 9c607e5a56777332e921b3ac6ab9a595
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: ComponentPointerListVariable
   - hash:
       serializedVersion: 2
       Hash: 4166580c620718548959a77fa7b43fc1
@@ -1864,22 +2284,10 @@ ScriptsOnlyBuild:
     className: TextMeshSpawner
   - hash:
       serializedVersion: 2
-      Hash: 1a02d531187fb1404703acd49d271486
-    assemblyName: Mirror.Transports
-    namespaceName: Mirror.SimpleWeb
-    className: SimpleWebTransport
-  - hash:
-      serializedVersion: 2
-      Hash: 977b2146d67920b39c9ca2f1de994025
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.BenchmarkIdle
-    className: Player
-  - hash:
-      serializedVersion: 2
-      Hash: dc7201f2a50742165c299f3c5770a869
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common
-    className: TankProjectile
+      Hash: 2b95506cfdb81dc8bc6be121c94c7e18
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: RectTransformChangeEventListener
   - hash:
       serializedVersion: 2
       Hash: ef38c1407dba8c1f5d69f5db61a694fe
@@ -1894,64 +2302,76 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
+      Hash: cf8109429acdd03639cea64755982023
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: StringFieldManager
+  - hash:
+      serializedVersion: 2
+      Hash: 4f525157091dc4ff85010856fed5f76a
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.ColliderRollbacks
+    className: Fire
+  - hash:
+      serializedVersion: 2
+      Hash: e016885158bb6d1e1a620a498be6fffd
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Vector2IntChangeEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: 5596c1efdfee71a36824530a3d011c75
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: UnsignedIntGameEvent
+  - hash:
+      serializedVersion: 2
+      Hash: 5f2f7058c5c2f75dca40e949f32d5602
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: ColliderGameEvent
+  - hash:
+      serializedVersion: 2
       Hash: 9637dcdf3068a91dfe653e61bb82f13d
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 437bfec50e5c4ca42e0647841487c08c
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkMatch
+      Hash: accd4728d87205c89986b01875c019cc
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.ObjectPooling
+    className: ObjectPool
   - hash:
       serializedVersion: 2
-      Hash: 6eb1ca7e691af20e4660e075979def3d
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.NetworkRoom
-    className: NetworkRoomManagerExt
+      Hash: 106460c012ca1eb53a14aa90dca48ab1
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: RichPresenceSetter
   - hash:
       serializedVersion: 2
-      Hash: 3d38cd9b57a01e6c528e13e560548319
-    assemblyName: Mirror
-    namespaceName: Mirror
-    className: NetworkStartPosition
+      Hash: 29ba5c6089db31ba320f8dac70f6a812
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Spawning
+    className: PlayerSpawner
   - hash:
       serializedVersion: 2
-      Hash: 1720ef2651a2da09506d65ae14f1de54
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.MultipleMatch
-    className: MatchNetworkManager
+      Hash: a90a860eb6f2ed68366952a6bcc0af25
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: ColorVariable
   - hash:
       serializedVersion: 2
-      Hash: 13c3199e68f4415d38adacaa5a9b8eae
-    assemblyName: Mirror.Transports
-    namespaceName: Mirror.Transports.Encryption
-    className: ThreadedEncryptionKcpTransport
+      Hash: 015113fbab35c4b0c394e4ff68f229ae
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.Types
+    className: DDOL
   - hash:
       serializedVersion: 2
-      Hash: e03224941f4540c65d33d4e215aa2b14
-    assemblyName: Mirror.Examples
-    namespaceName: StinkySteak.NetcodeBenchmark
-    className: BehaviourConfig
-  - hash:
-      serializedVersion: 2
-      Hash: a06fd70f734ad41de848906f2562dd9c
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.BilliardsPredicted
-    className: PlayerPredicted
-  - hash:
-      serializedVersion: 2
-      Hash: 6151e5e81592a6028163b947fbcf5d79
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: TeamInterestManagement
-  - hash:
-      serializedVersion: 2
-      Hash: 0327c9d2336d8c91aad8f0c573497ddd
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkLobbyManager
+      Hash: e73a5e1807faabd15fa3ada85bc88d5c
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: ToggleEventHelper
   - hash:
       serializedVersion: 2
       Hash: da5a949a0bbd2ff91bc51c5805c2c41f
@@ -1960,10 +2380,22 @@ ScriptsOnlyBuild:
     className: UnityOnMouseUpAsButtonMessageListener
   - hash:
       serializedVersion: 2
-      Hash: e4ff2fc2a569f305e82dedf09be0112e
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.MultipleMatch
-    className: CanvasController
+      Hash: a31afa465c7810a9c599e2aa04971192
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: StringLibrary
+  - hash:
+      serializedVersion: 2
+      Hash: 2b1907a81f27f3d7f39ef7b7e6776492
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.AdditiveScenes
+    className: Player
+  - hash:
+      serializedVersion: 2
+      Hash: b601e382953276808c36fa6f7facdec6
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Prediction
+    className: NetworkTrigger2D
   - hash:
       serializedVersion: 2
       Hash: fc0a9a681d29388386a9abf3f08b024a
@@ -1972,22 +2404,16 @@ ScriptsOnlyBuild:
     className: Benchmark03
   - hash:
       serializedVersion: 2
-      Hash: b2120b555106fb91abcdf6c41bdcd985
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CharacterSelection
-    className: SceneReferencer
+      Hash: a5532ca208de8ca377a763fac93146d0
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Ownership
+    className: PredictedSpawn
   - hash:
       serializedVersion: 2
-      Hash: cc93d1d0e742f178de2eddd4cb882d39
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CharacterSelection
-    className: NetworkManagerCharacterSelection
-  - hash:
-      serializedVersion: 2
-      Hash: 1fed18b3e6ae74b5035dc41284aca041
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.SnapshotInterpolationDemo
-    className: ClientCube
+      Hash: c33d3ded24dcec6d64f41da3a89831db
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: FriendProfile
   - hash:
       serializedVersion: 2
       Hash: 4f353524ce6564e40764f1ea080b2d85
@@ -1996,16 +2422,10 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerStay2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 29aab7a1360d06f359ede170d720e193
-    assemblyName: Mirror.Authenticators
-    namespaceName: Mirror.Authenticators
-    className: DeviceAuthenticator
-  - hash:
-      serializedVersion: 2
-      Hash: 431adf776f305905625b21c6814002eb
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Pong
-    className: NetworkManagerPong
+      Hash: 9ed1dd0a11b8cf662caa1d9e6e955843
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: BoolListVariable
   - hash:
       serializedVersion: 2
       Hash: 9104447b683bf70406fa01f12ecb564a
@@ -2020,16 +2440,22 @@ ScriptsOnlyBuild:
     className: Scrollbar
   - hash:
       serializedVersion: 2
+      Hash: 70deca725de7f3c3ef6aaf4c74860122
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Observing
+    className: GridCondition
+  - hash:
+      serializedVersion: 2
       Hash: 13f262cc0741566a7ab72682984bc3e1
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_SubMesh
   - hash:
       serializedVersion: 2
-      Hash: 219a791a2700b94df0f2c88e0b15d5de
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.MultipleMatch
-    className: CellGUI
+      Hash: 62d1ff1a4fe4ddb56690772d00fcd2e3
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.ColliderRollbacks
+    className: TextCanvas
   - hash:
       serializedVersion: 2
       Hash: febcfbf0a0d85e37808a3740e3c2c6fa
@@ -2038,10 +2464,16 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: b4a74cb88bb8f4d0cc57c605db2dc628
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: MatchInterestManagement
+      Hash: 4cffa4f956caac44b893039bc45eb56d
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Prediction
+    className: OfflineRigidbody
+  - hash:
+      serializedVersion: 2
+      Hash: c2308799291a5fe2bebeb1ef66d63115
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: TriggerExitSender
   - hash:
       serializedVersion: 2
       Hash: 672716ae97f6ddb615fa5ac3ec9da349
@@ -2050,10 +2482,34 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 512e3711be37d92685a5b796804a49b8
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: DistanceInterestManagementCustomRange
+      Hash: cf632d0ee2c06c2c99c565ff6fde0273
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: UnsignedLongGameEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: 2ca4e47645c8410043ab04cd2d042a86
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.Types.CanvasContainers
+    className: FloatingContainer
+  - hash:
+      serializedVersion: 2
+      Hash: 3b02fca1a420cbfb492ef5d4cf795c95
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Observing
+    className: SceneCondition
+  - hash:
+      serializedVersion: 2
+      Hash: ba728081fc7669525f02f256be8a86f4
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: Vector3ListVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 36e8933e5dbf52c8c56cf06c6bab5889
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: DoubleVariable
   - hash:
       serializedVersion: 2
       Hash: bc75926bfd3609757f7bf33ff766f026
@@ -2068,10 +2524,10 @@ ScriptsOnlyBuild:
     className: PlayerInputEditor
   - hash:
       serializedVersion: 2
-      Hash: 9d5c8d873f442bed0a09c904e457a18e
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.EdgegapLobby
-    className: UILobbyEntry
+      Hash: 859d2ba47e85f368130c76ce721583c0
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: CollisionStaySender
   - hash:
       serializedVersion: 2
       Hash: a92561298b80715aa69e8fa770123cb5
@@ -2086,22 +2542,10 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: a2367d04f4708d833739ffdbe02e0b40
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkRigidbodyReliable2D
-  - hash:
-      serializedVersion: 2
-      Hash: f049f074d945e9e2bd0fddb6a5c151f6
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CharacterSelection
-    className: StaticVariables
-  - hash:
-      serializedVersion: 2
-      Hash: 17f9a16e72ca5f2009e716e79873ec07
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Player
-    className: PlayerControllerRBHybrid
+      Hash: 475bbf3ab61ad9cf65778dde0261a68c
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: Vector2IntVariable
   - hash:
       serializedVersion: 2
       Hash: 3074afe1b03a0fb081e176a4ef1b9d09
@@ -2110,10 +2554,28 @@ ScriptsOnlyBuild:
     className: InputActionAssetEditor
   - hash:
       serializedVersion: 2
+      Hash: b4bbbae0174f9fa8fcb14d2dc0f968a9
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Vector4ChangeEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: ec60430e75181150deb5dfa7d9d84c91
+    assemblyName: Assembly-CSharp
+    namespaceName: FishySteamworks
+    className: FishySteamworks
+  - hash:
+      serializedVersion: 2
       Hash: 7fdd3ee28e9042c3ec83463d0bb3b230
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: TMP_FrameRateCounter
+  - hash:
+      serializedVersion: 2
+      Hash: 05b0821e70e0fd9d9b00415904d5cc5b
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Float4ChangeEvent
   - hash:
       serializedVersion: 2
       Hash: e63fe08659e7e4647a51098c666f8845
@@ -2122,10 +2584,58 @@ ScriptsOnlyBuild:
     className: DownloadableSample
   - hash:
       serializedVersion: 2
+      Hash: 68c87d34c5ec5ff9bf9408cd22dccf2b
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.Benchmarks.NetworkTransforms
+    className: MoveRandomlyPhysics
+  - hash:
+      serializedVersion: 2
+      Hash: 38679b3348bcaeb99ceee443c580aa5e
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: DoubleListVariable
+  - hash:
+      serializedVersion: 2
+      Hash: a85db1dc5b6533029114b28b9b80c741
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: Vector2ListVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 23f75039ccf201441ff4ca4ce58bdc8d
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: SetUserAvatar
+  - hash:
+      serializedVersion: 2
+      Hash: 0623d08330dd3d3511ebe835f51d6581
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: CameraPointerVariable
+  - hash:
+      serializedVersion: 2
       Hash: f669be52680c88846b2093fd41d1e06e
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: ec6ca14bd1d6aea06ac8fd258ce50df0
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: FloatStatObject
+  - hash:
+      serializedVersion: 2
+      Hash: 55b48e6f2e60666a45f8f307cfc92865
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: RectTransformPointerListVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 33062da96bd49bb2ac18ec2c616c4403
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: SetUserIdLabel
   - hash:
       serializedVersion: 2
       Hash: 20a120e55ad3ab65556328d5fd8309dd
@@ -2140,7 +2650,13 @@ ScriptsOnlyBuild:
     className: InputActionReference
   - hash:
       serializedVersion: 2
-      Hash: 810d6c2e74239f9d654855c998077d35
+      Hash: 39666dd7ef75d662d67642eb3aa1ac0e
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: GameEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: d5cb317b377a376a486c5d8f430b08a9
     assemblyName: Assembly-CSharp
     namespaceName: DefaultNamespace.Player
     className: InputManager
@@ -2164,22 +2680,28 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 18d7fedfdce8111618ef8625210f2cdd
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.TopDownShooter
-    className: PlayerTopDown
+      Hash: 741a14ed222086af01876fac6cc70431
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: UnsignedLongVariable
   - hash:
       serializedVersion: 2
-      Hash: e79eed2f58d707ba33e571af054dd3f1
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Tank
-    className: TankHealth
+      Hash: 8a5aa0852e11166b776b1b9af5cc1030
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: LongGameEvent
   - hash:
       serializedVersion: 2
-      Hash: 2a7b654334756a9b4d4d58a8f422bcd0
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.AdditiveScenes
-    className: ZoneHandler
+      Hash: 617a888570319977426fbf389c1eb146
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: FloatGameEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: 44b8ab9be881ee9c2ec6b4b76737a74b
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: SetUserName
   - hash:
       serializedVersion: 2
       Hash: c4b85a67513b4f0cf7b5fb2d5ded04b0
@@ -2194,22 +2716,10 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerEnter2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 2897d22d0c93332eb79725d4b5e46726
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Chat
-    className: ChatAuthenticator
-  - hash:
-      serializedVersion: 2
       Hash: 8668b70b18eb7f5cd2dce04386848007
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: VertexJitter
-  - hash:
-      serializedVersion: 2
-      Hash: cc90242fb011fc67dfae1f2ce02e0d8c
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Hex2D
-    className: Hex2DPlayerCamera
   - hash:
       serializedVersion: 2
       Hash: 7bb32d6e4c7614a97d9723ce7e26588c
@@ -2218,10 +2728,10 @@ ScriptsOnlyBuild:
     className: BasicPlayableBehaviour
   - hash:
       serializedVersion: 2
-      Hash: 0e02302e9ac75fe681771c0efadda4ca
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CharacterSelection
-    className: ScriptAnimations
+      Hash: 48c819b38d276594bf312b50e9ae8872
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: TransformChangeEventListener
   - hash:
       serializedVersion: 2
       Hash: e8d390bd9ecacc453a7500b90d0c0292
@@ -2236,6 +2746,12 @@ ScriptsOnlyBuild:
     className: PlayModeRunnerCallback
   - hash:
       serializedVersion: 2
+      Hash: f72486230a34948af8d25bc915afef94
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: TransformListVariable
+  - hash:
+      serializedVersion: 2
       Hash: afb7b65d28d5a7423e69a1b076be0064
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -2246,12 +2762,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: AudioPlayableAsset
-  - hash:
-      serializedVersion: 2
-      Hash: f784eec97ee28266081fc1a728a5fb4c
-    assemblyName: Mirror.Examples
-    namespaceName: StinkySteak.MirrorBenchmark
-    className: SineMoveRandomBehaviour
   - hash:
       serializedVersion: 2
       Hash: b14e186823458f549289789cccbb77ce
@@ -2266,16 +2776,16 @@ ScriptsOnlyBuild:
     className: TMP_TextEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 04d27c2b6069f9c70302e81f558a31de
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Basic
-    className: CanvasUI
+      Hash: 1cae435e297cace74d263bb55c25b8ed
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: StringChangeEventListener
   - hash:
       serializedVersion: 2
-      Hash: b59ed17e32714372868b58b28abda946
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.EdgegapLobby
-    className: UILobbyCreate
+      Hash: 5659132dc8fe1af600583a1cea620003
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.Types
+    className: SmoothCameraTarget
   - hash:
       serializedVersion: 2
       Hash: ee34255e3e86289bde9bad5e07b84cbc
@@ -2302,12 +2812,6 @@ ScriptsOnlyBuild:
     className: InputSettings
   - hash:
       serializedVersion: 2
-      Hash: 9c83494331b79f244bfe5c6e5c9560fa
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.RigidbodyPhysics
-    className: AddForce
-  - hash:
-      serializedVersion: 2
       Hash: a89b0448af4e1cd103a77f9fec0a961f
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -2320,22 +2824,34 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 83bbcafe9fb92137025176a905ca5534
-    assemblyName: Mirror.Examples
-    namespaceName: 
-    className: Box
+      Hash: dd125091411549cfedde0e36e379a371
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Editing
+    className: ReserializeNetworkObjectsEditor
   - hash:
       serializedVersion: 2
-      Hash: a68b670c095251f5c1d7555f9acfeaf9
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: DistanceInterestManagement
+      Hash: 29bc10049e67f641fae7dd7483fe5912
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: TexturePointerVariable
   - hash:
       serializedVersion: 2
-      Hash: 204ee7740a861ca2b2b874087112b7df
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Hex3D
-    className: Hex3DNetworkManager
+      Hash: e68027b27e5baf6322154277ae6e9f16
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: AvgRateStatObject
+  - hash:
+      serializedVersion: 2
+      Hash: 2470210568b84a04b0a31973b4086687
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: StringField
+  - hash:
+      serializedVersion: 2
+      Hash: 11f45ad9c8645ae2c598c9ed3e75b0cc
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: LongVariable
   - hash:
       serializedVersion: 2
       Hash: e2734bcc7b3e94776ade5d59f54fec1e
@@ -2344,28 +2860,34 @@ ScriptsOnlyBuild:
     className: TMP_TextSelector_B
   - hash:
       serializedVersion: 2
+      Hash: 48e5f1b0823561e298a894b57e81a988
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.AdditiveScenes
+    className: LevelLoader
+  - hash:
+      serializedVersion: 2
       Hash: 4728e3d21cc2a12e391e71ec9b7eed0b
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: 60edf8085a8b3ff0b829471c24aec7ec
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Tanks
-    className: Tank
+      Hash: a93e2aa1ae797385e2f1ddfeb171cba4
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.ColliderRollbacks
+    className: RollbackVisualizer
   - hash:
       serializedVersion: 2
-      Hash: b6d1fbee8e5118ea55517445f505a024
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CouchCoop
-    className: CouchPlayer
+      Hash: 1a85a2503cea85d98cfb1c0a5249b930
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example.ColliderRollbacks
+    className: PlayerMotor
   - hash:
       serializedVersion: 2
-      Hash: f23795eac2a9951adea78ec8be4b7739
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.MultipleAdditiveScenes
-    className: PlayerScore
+      Hash: 70e74ec69dc7ace9b682ae9bc6938aa5
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: Vector4ListVariable
   - hash:
       serializedVersion: 2
       Hash: bc70d735e9bacce37de9402c65535a5b
@@ -2374,16 +2896,10 @@ ScriptsOnlyBuild:
     className: SteamManager
   - hash:
       serializedVersion: 2
-      Hash: d7085246472734ac3b367a95c6efa715
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.PredictionBenchmark
-    className: NetworkManagerPredictionBenchmark
-  - hash:
-      serializedVersion: 2
-      Hash: 4cc6d5e0df780310fa28691c740f7a60
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.RigidbodyBenchmark
-    className: AddForce
+      Hash: adba0be119a692d201e412547146d1d3
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: UnsignedLongListVariable
   - hash:
       serializedVersion: 2
       Hash: 67272c9c30c50b68ef1ce72ac0191c57
@@ -2392,16 +2908,22 @@ ScriptsOnlyBuild:
     className: UnityOnMoveMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 160434349aebdb6a9790883f3c969af4
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkTransformReliable
+      Hash: b7b5e251623621af3756c3ce8e6e9587
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: UnsignedLongChangeEventListener
   - hash:
       serializedVersion: 2
-      Hash: 46f971bf5decb8905bd32ab68eaba382
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.PickupsDropsChilds
-    className: PickupsDropsChilds
+      Hash: 319119f32576bc5d1cce604ede989939
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing
+    className: NetworkManager
+  - hash:
+      serializedVersion: 2
+      Hash: 14c06bc9c40cb6bc9b6a10104c22e377
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Prediction
+    className: NetworkCollision
   - hash:
       serializedVersion: 2
       Hash: d0392b7f3f52d5af537ade186b4f51f1
@@ -2410,10 +2932,10 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
-      Hash: 5ec0c22faee52a0e2e6b17d83e1618a9
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Chat
-    className: LoginUI
+      Hash: fe09386ae713640ef5d042ed0822f1bd
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: SteamworksCreator
   - hash:
       serializedVersion: 2
       Hash: dbe80c9dc024d18e75107a0b4da06133
@@ -2422,10 +2944,10 @@ ScriptsOnlyBuild:
     className: InputSystemUIInputModule
   - hash:
       serializedVersion: 2
-      Hash: 6f8c048f779f935d5e632bef937e798e
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkRuntimeProfiler
+      Hash: 98c9cdc32649cea415149e17aa5329e2
+    assemblyName: Assembly-CSharp
+    namespaceName: FishNet.Upgrading.Mirror.Editing
+    className: UpgradeFromMirrorMenu
   - hash:
       serializedVersion: 2
       Hash: d5cd7f207e91ca8336c65a577a6fb2a0
@@ -2434,46 +2956,64 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 2efc8d98bc7add9398922ebaff0247db
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CouchCoop
-    className: CanvasScript
+      Hash: fe46ff917bb76633c8610cbcd8495b0c
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: AnimationCurveListVariable
   - hash:
       serializedVersion: 2
-      Hash: b4e172222e7fcd6466dabad223ef051a
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common
-    className: PlayerCamera
+      Hash: 7398193ef7f6aa23d4f4926dec073ba3
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: QuaternionListVariable
   - hash:
       serializedVersion: 2
-      Hash: db4d8fda1a1cc79b61635cc1a3bb825d
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Player
-    className: PlayerControllerRBBase
+      Hash: 94df6005096f9833537111a110a3bcb4
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.Types.CanvasContainers
+    className: FloatingImage
   - hash:
       serializedVersion: 2
-      Hash: b08113ab737ddca80def76a7dc9eacc5
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CharacterSelection
-    className: PlayerEmpty
+      Hash: e5bc8d9f5b47d0fbee926a97b15a9bd7
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Predicting.Editing
+    className: PredictionManagerEditor
   - hash:
       serializedVersion: 2
-      Hash: ae4afae3f1df8923493954b5ffd5445d
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.AutoLANClientController
-    className: NetworkSceneScript
+      Hash: dc91f0b04e7d3cb421fafe2bda080530
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.Types.CanvasContainers
+    className: OptionMenuButton
   - hash:
       serializedVersion: 2
-      Hash: 80bf13984da6234c936c5d7431e036a1
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkRoomPlayer
+      Hash: 09117b36acfe82f7cb25235520f8fba7
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: SceneProcessStateGameEvent
   - hash:
       serializedVersion: 2
-      Hash: e14339890727246181d954ff41889756
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.NetworkRoom
-    className: Reward
+      Hash: 50f99bea57e1e3f5988ee51388150a17
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: LongChangeEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: 69fad94d0e65f853849877822f4d3fde
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Object
+    className: DualPrefabObjects
+  - hash:
+      serializedVersion: 2
+      Hash: f5165a3563173270f8eb272739bbbaf7
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: FriendInviteDropDown
+  - hash:
+      serializedVersion: 2
+      Hash: 6d27cbb0bf4a5418c503f06b9ec58ac4
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Server
+    className: ServerManager
   - hash:
       serializedVersion: 2
       Hash: 9a174471d4db2c0c6d3ac47d2f818db1
@@ -2488,10 +3028,16 @@ ScriptsOnlyBuild:
     className: MultiplayerEventSystem
   - hash:
       serializedVersion: 2
-      Hash: e3ebc3a68bb9593b5aeb778a3c939141
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.MultipleAdditiveScenes
-    className: PhysicsCollision
+      Hash: 344849e065c8a1cab18c8eaf83dd5842
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.ColliderRollback
+    className: ColliderRollbackEditor
+  - hash:
+      serializedVersion: 2
+      Hash: f808238fc18febd34dd69013ab3d7ba0
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: TransformVariable
   - hash:
       serializedVersion: 2
       Hash: 2bbd05175d4cdd21e24f9716cdd24f83
@@ -2500,16 +3046,10 @@ ScriptsOnlyBuild:
     className: TrackedPoseDriver
   - hash:
       serializedVersion: 2
-      Hash: cb319918a197cddf16d7c99d92b051f6
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Chat
-    className: ChatNetworkManager
-  - hash:
-      serializedVersion: 2
-      Hash: efee7c7b09ca24b7220fa02b300095df
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.PickupsDropsChilds
-    className: EquippedBox
+      Hash: 339db5726ec10548a485bba6a3c0e20d
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: StringListVariable
   - hash:
       serializedVersion: 2
       Hash: 0f5a086d4d028363983ba6ca30a01397
@@ -2518,10 +3058,16 @@ ScriptsOnlyBuild:
     className: UnityOnMouseOverMessageListener
   - hash:
       serializedVersion: 2
-      Hash: a7379530dbdd8d60f2d4d06e0cceca81
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Tank
-    className: TankTurretHybrid
+      Hash: ba9de1d0b8ae98bc7b0d7086153871fd
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Statistic
+    className: StatisticsManager
+  - hash:
+      serializedVersion: 2
+      Hash: 74c8a883a1a3b8358f512cc209a18f1d
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: DataLibraryVariable
   - hash:
       serializedVersion: 2
       Hash: 2c583ad0ac85d03e8700dd05fdcb46cb
@@ -2530,16 +3076,10 @@ ScriptsOnlyBuild:
     className: Variables
   - hash:
       serializedVersion: 2
-      Hash: 3f6c2c1c7ca8f8d647cb5238ae9fa913
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Basic
-    className: Player
-  - hash:
-      serializedVersion: 2
-      Hash: 06f1e69e1c6d57ca68e9f0c83b4f6b10
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Basic
-    className: BasicNetManager
+      Hash: a033f95b6fca1d0eeb5539342ff02532
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: SetAchievementIcon
   - hash:
       serializedVersion: 2
       Hash: 502a0d788634601faaefeacfda55e23a
@@ -2548,10 +3088,28 @@ ScriptsOnlyBuild:
     className: DropdownSample
   - hash:
       serializedVersion: 2
-      Hash: 3fff8cbea827071961d73cf8fe617561
+      Hash: fdcb7c42ef60887ba482def71d94939d
     assemblyName: Assembly-CSharp
     namespaceName: DefaultNamespace
     className: Game
+  - hash:
+      serializedVersion: 2
+      Hash: ab7a429f19d056951b9afaa6db046df7
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: SetUserStatus
+  - hash:
+      serializedVersion: 2
+      Hash: 92a7f63747eb24371b6ab197d846a801
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Logging.Editing
+    className: LevelLoggingConfigurationEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 9d2b21ec26e45793a2b970e4ffb57d9c
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: CanvasPointerVariable
   - hash:
       serializedVersion: 2
       Hash: b30c8635462e66ac20f4241106119f77
@@ -2566,10 +3124,28 @@ ScriptsOnlyBuild:
     className: TMP_PhoneNumberValidator
   - hash:
       serializedVersion: 2
-      Hash: 8f38d3744ca9bd50a2b46f1be06bf724
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: NetworkRigidbodyReliable
+      Hash: 288c9016c8b5196712ab327528a2c03a
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Observing
+    className: OwnerOnlyCondition
+  - hash:
+      serializedVersion: 2
+      Hash: 518a02e34bf05425a788270e00af1c6e
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: DoubleGameEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: ff403b821531c2334e6c58c64b9c0a41
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Editing
+    className: DelayedEditorTasks
+  - hash:
+      serializedVersion: 2
+      Hash: e7331cf89946257e2d2b18077729ab6f
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Demo.Prediction.Rigidbodies
+    className: Boost
   - hash:
       serializedVersion: 2
       Hash: c4ae0ec287bc3cde0bc98e1a65f9cef7
@@ -2578,16 +3154,16 @@ ScriptsOnlyBuild:
     className: VertexColorCycler
   - hash:
       serializedVersion: 2
+      Hash: 79c282617c9f9497fd1df606dee815f4
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering
+    className: KeyedStringListVariable
+  - hash:
+      serializedVersion: 2
       Hash: 568292fb7ea6c4f7a667e5ff76bc7e85
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseUpMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: c42f1a59c44166c7a1ef732acc322f5c
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.MultipleAdditiveScenes
-    className: Reward
   - hash:
       serializedVersion: 2
       Hash: 1553f209ae0b2d5d3a35685fca55f9c3
@@ -2596,16 +3172,10 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 5f4108d9dccbf9fb75a8f4ae1041f011
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.AutoLANClientController
-    className: AutoLANNetworkDiscovery
-  - hash:
-      serializedVersion: 2
-      Hash: 1c713f6f074c1cb3ac5f2ef3c84d6fcc
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.AutoLANClientController
-    className: CanvasHUD
+      Hash: 9d700a7aed808ccfebbdb0447d9a1488
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: LongChangeEvent
   - hash:
       serializedVersion: 2
       Hash: 9eccc4340fcd994586e0dcb134c4612e
@@ -2614,16 +3184,10 @@ ScriptsOnlyBuild:
     className: TeleType
   - hash:
       serializedVersion: 2
-      Hash: de777ecfd4df077e4f099736df52b476
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common.Controllers.Flyer
-    className: FlyerControllerUnreliable
-  - hash:
-      serializedVersion: 2
-      Hash: 88d953e3d016e840018f85046b322ef9
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.PlayerTest
-    className: PlayerTestNetMan
+      Hash: 4780e05d3c662adf6083fd713460f6f4
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration.UI
+    className: FriendGroupsDisplay
   - hash:
       serializedVersion: 2
       Hash: 9fb1c3ab48b256d508ecddd967f98652
@@ -2632,16 +3196,28 @@ ScriptsOnlyBuild:
     className: VertexZoom
   - hash:
       serializedVersion: 2
-      Hash: 96008852a9291afdc957ffbab4c7fb87
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: PredictedRigidbody
+      Hash: 41fc4ec3ebad096dcc702dca9973e5f3
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: DoubleGameEvent
   - hash:
       serializedVersion: 2
-      Hash: 308b8a4882c4cad9ac17dbb769d4c326
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Common
-    className: PhysicsSimulator
+      Hash: 3beb9302f3e5447946ba0129e5c9a5a9
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: FriendManager
+  - hash:
+      serializedVersion: 2
+      Hash: 1413deb228c2e53936de245b000e39ca
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Observing
+    className: DistanceCondition
+  - hash:
+      serializedVersion: 2
+      Hash: 773b841acdc8b4f4333f540a0df7edd5
+    assemblyName: FishNet.Demos
+    namespaceName: FishNet.Example
+    className: NetworkHudCanvases
   - hash:
       serializedVersion: 2
       Hash: ff76cf6cf52b4db7b95af6ffadca9288
@@ -2650,16 +3226,34 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
+      Hash: a4efe8d4aabafbb274c1af75a0e22eb1
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Component.Transforming
+    className: MonoTickSmoother
+  - hash:
+      serializedVersion: 2
+      Hash: b2883a10460b490a7a6322c835a3472a
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Int2GameEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: 1bd335374e476ba6f75d2cdb20244eeb
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Managing.Timing
+    className: TimeManager
+  - hash:
+      serializedVersion: 2
       Hash: c4cdb902228df56d5b2b639d6a6bbd3c
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem
     className: PlayerInputManager
   - hash:
       serializedVersion: 2
-      Hash: 742c36122575f1039f884cb78de52f0c
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.CouchCoop
-    className: PlatformMovement
+      Hash: 36644383db6ec7d4b2582353e4b81ac7
+    assemblyName: Heathen.Steamworks
+    namespaceName: HeathenEngineering.SteamworksIntegration
+    className: SteamSystemEvents
   - hash:
       serializedVersion: 2
       Hash: 02a47340661d2ea7c6d30e292cfef403
@@ -2674,12 +3268,6 @@ ScriptsOnlyBuild:
     className: UnityOnMouseEnterMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 3e1c13905732f4e93a3af82119c3985e
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.AutoLANClientController
-    className: AutoLANNetworkManager
-  - hash:
-      serializedVersion: 2
       Hash: 4fcf0bb4aff1d14a1dfcdedc4b07bd05
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.EventSystems
@@ -2692,28 +3280,40 @@ ScriptsOnlyBuild:
     className: Benchmark01
   - hash:
       serializedVersion: 2
-      Hash: 391f911d721bb2355228769555fb4bdf
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.Hex3D
-    className: Hex3DPlayer
+      Hash: 148f5f40e6b09532fa657fc53752b153
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: DoubleChangeEventListener
   - hash:
       serializedVersion: 2
-      Hash: 7c2d626407c0bd627f0cb30b7c1de880
-    assemblyName: Mirror.Components
-    namespaceName: Mirror
-    className: SpatialHashingInterestManagement
+      Hash: bf4adb89994d192eb4008ea750d4fd32
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Object
+    className: NetworkObject
   - hash:
       serializedVersion: 2
-      Hash: 93cd211d677266466620c7127523bb9a
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.NetworkRoom
-    className: NetworkRoomPlayerExt
+      Hash: c31f14f32f13798b99aebfe6eeadf63c
+    assemblyName: Heathen.Core
+    namespaceName: HeathenEngineering.Events
+    className: Float4GameEvent
   - hash:
       serializedVersion: 2
-      Hash: c69fdf07be9e4391a341746671023105
-    assemblyName: Mirror.Examples
-    namespaceName: Mirror.Examples.TankTheftAuto
-    className: TankTheftAutoNetMan
+      Hash: 752e8c30e95bfdc033a7875c63208241
+    assemblyName: GameKit.Dependencies
+    namespaceName: GameKit.Dependencies.Utilities.Types
+    className: RectTransformResizer
+  - hash:
+      serializedVersion: 2
+      Hash: 8bff0eeac7694bd41b82dfe6b26e0de7
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Editing.Beta
+    className: BetaModeMenu
+  - hash:
+      serializedVersion: 2
+      Hash: 72cb645926b4dd9672267d2aac48e5f4
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MainMenuManager
   - hash:
       serializedVersion: 2
       Hash: 00eef92bf387da2c9009267123d9d674
@@ -2722,17 +3322,31 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerExit2DMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 5c8abb606a59ec60fea11c10fce934cd
+    assemblyName: FishNet.Runtime
+    namespaceName: FishNet.Transporting
+    className: NetworkReaderLoop
+  - hash:
+      serializedVersion: 2
       Hash: 8b15e35eb98fc258ec2e839df7c3c9b0
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: dc6dc992b8ce39dfc3dc54204d5b3204
+      Hash: b4e0f5c0131c764b687656c721dd3735
     assemblyName: Assembly-CSharp
-    namespaceName: Network
-    className: ChatBehaviour
+    namespaceName: 
+    className: PlayerCamera
+  - hash:
+      serializedVersion: 2
+      Hash: 6005b6de15635120a005e66b369fee95
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ManualPlayerSpawner
   platform: 19
   scenePathNames:
+  - Assets/Scenes/BootstrapScene.unity
+  - Assets/Scenes/MainMenuScene.unity
   - Assets/Scenes/MainScene.unity
   playerPath: E:/unityProjects/OnlineGame/Build/OnlineGame_Data/OnlineGame.exe

@@ -1,10 +1,11 @@
-﻿using Unity.VisualScripting;
+﻿using FishNet.Object;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace DefaultNamespace.Player
 {
-    public class InputManager : MonoBehaviour
+    public class InputManager : NetworkBehaviour
     {
         private PlayerInput playerInput;
         private PlayerInput.OnFootActions footActions;
@@ -13,8 +14,12 @@ namespace DefaultNamespace.Player
         private PlayerMovement playerMovement;
         
         private PlayerLook playerLook;
-        
-        
+
+        public override void OnStartClient()
+        {
+            if (IsOwner)
+                GetComponent<InputManager>().enabled = true;
+        }
         
         void Awake()
         {
@@ -25,11 +30,16 @@ namespace DefaultNamespace.Player
             playerLook = GetComponent<PlayerLook>();
             
             footActions.Jump.performed += jump => playerMovement.Jump();
-            footActions.MenuOpen.performed += menu => SwitchMovementEnabled();
+            //footActions.MenuOpen.performed += menu => SwitchMovementEnabled();
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             
+        }
+
+        public void AssignCamera(Camera cam)
+        {
+            playerLook.cam = cam;
         }
 
         private void SwitchMovementEnabled()
@@ -49,11 +59,15 @@ namespace DefaultNamespace.Player
 
         void FixedUpdate()
         {
+            if (!IsOwner)
+                return;
             playerMovement.ProcessMove(footActions.Movement.ReadValue<Vector2>());
         }
 
         void LateUpdate()
         {
+            if (!IsOwner)
+                return;
             playerLook.ProcessLook(footActions.Look.ReadValue<Vector2>());
         }
 

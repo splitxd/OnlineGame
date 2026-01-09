@@ -91,12 +91,12 @@
     <Compile Include="Assets\FishNet\CodeGenerating\Helpers\Extension\ILProcessorExtensions.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\Processing\CustomSerializerProcessor.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\Helpers\Extension\ModuleDefinitionExtensions.cs" />
-    <Compile Include="Assets\FishNet\CodeGenerating\Helpers\NetworkBehaviourHelper.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\Helpers\CreatedSyncVarGenerator.cs" />
+    <Compile Include="Assets\FishNet\CodeGenerating\Helpers\NetworkBehaviourHelper.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\Helpers\Extension\InstructionExtensions.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\Helpers\Typed\SyncIndexData.cs" />
-    <Compile Include="Assets\FishNet\CodeGenerating\Processing\CodegenBase.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\Helpers\PhysicsHelper.cs" />
+    <Compile Include="Assets\FishNet\CodeGenerating\Processing\CodegenBase.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\ILCore\FNPostProcessorAssemblyResolver.cs" />
     <None Include="Assets\FishNet\CodeGenerating\FN_README.txt" />
     <None Include="Assets\FishNet\CodeGenerating\Unity.FishNet.CodeGen.asmdef" />

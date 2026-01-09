@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.rlabrecque.steamworks.n
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{e7de8b59-a927-2d3f-8c4a-0237a49e362d}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{f7950b28-4ef2-df4a-1d22-be40b246b1df}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,8 +38,6 @@ Global
 		{3e7d6bb6-c07c-7002-40a5-9d6f903933d9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{e7de8b59-a927-2d3f-8c4a-0237a49e362d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{e7de8b59-a927-2d3f-8c4a-0237a49e362d}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{f7950b28-4ef2-df4a-1d22-be40b246b1df}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{f7950b28-4ef2-df4a-1d22-be40b246b1df}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

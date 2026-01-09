@@ -16,7 +16,7 @@ namespace DefaultNamespace
         
         private void Start()
         {
-            Game.Instance.menuViewController = this;
+            //Game.Instance.menuViewController = this;
         }
 
         public void OnJoinServer(string serverInfo)

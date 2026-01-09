@@ -19,6 +19,6 @@ namespace DefaultNamespace
             }
         }
         
-        public MenuViewController menuViewController;
+        public ManualPlayerSpawner manualPlayerSpawner;
     }
 }
