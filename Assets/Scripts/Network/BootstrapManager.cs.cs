@@ -15,6 +15,7 @@ public class BootstrapManager : MonoBehaviour
     protected Callback<LobbyCreated_t> LobbyCreated;
     protected Callback<GameLobbyJoinRequested_t> JoinRequest;
     protected Callback<LobbyEnter_t> LobbyEntered;
+    protected Callback<GameOverlayActivated_t> GameOverlayActivated;
 
     public static ulong CurrentLobbyID;
 
@@ -23,6 +24,21 @@ public class BootstrapManager : MonoBehaviour
         LobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
         JoinRequest = Callback<GameLobbyJoinRequested_t>.Create(OnJoinRequest);
         LobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);
+    }
+    
+    private void OnEnable() {
+        if (SteamManager.Initialized) {
+            GameOverlayActivated = Callback<GameOverlayActivated_t>.Create(OnGameOverlayActivated);
+        }
+    }
+    
+    private void OnGameOverlayActivated(GameOverlayActivated_t pCallback) {
+        if(pCallback.m_bActive != 0) {
+            Debug.Log("Steam Overlay has been activated");
+        }
+        else {
+            Debug.Log("Steam Overlay has been closed");
+        }
     }
 
     public void GoToMenu()

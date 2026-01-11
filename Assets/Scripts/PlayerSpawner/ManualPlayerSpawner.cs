@@ -19,7 +19,6 @@ public class ManualPlayerSpawner : NetworkBehaviour
     [Server]
     public void SpawnPlayers(Scene scene)
     {
-        Debug.Log("AT LEAST WE TRIED");
         if (playerPrefab == null)
         {
             Debug.LogWarning("Player prefab is not assigned and thus cannot be spawned.");

@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using DefaultNamespace.Network;
+using UnityEditor;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -20,5 +21,7 @@ namespace DefaultNamespace
         }
         
         public ManualPlayerSpawner manualPlayerSpawner;
+        public MenuViewController menuViewController;
+        public MainMenuController mainMenuController = new MainMenuController();
     }
 }

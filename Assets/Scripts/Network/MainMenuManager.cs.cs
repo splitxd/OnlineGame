@@ -1,6 +1,8 @@
     using System;
+    using System.Collections.Generic;
     using DefaultNamespace;
     using FishNet.Managing.Scened;
+    using FishNet.Object;
     using Steamworks;
     using TMPro;
     using UnityEngine;
@@ -9,7 +11,9 @@
     public class MainMenuManager : MonoBehaviour
     {
         private static MainMenuManager instance;
-
+        
+        [SerializeField] private GameObject readyMenuPrefab;
+        [SerializeField] private Transform readyMenuContainer;
         [SerializeField] private GameObject menuScreen, lobbyScreen;
         [SerializeField] private TMP_InputField lobbyInput;
 
@@ -24,12 +28,7 @@
 
         public void CreateLobby()
         {
-            if (!SteamAPI.Init())
-            {
-                Debug.LogError("Steamworks не инициализирован.");
-                return;
-            }
-            BootstrapManager.CreateLobby();
+            Game.Instance.mainMenuController.CreateLobby();
         }
 
         public void OpenMainMenu()
@@ -60,21 +59,17 @@
 
         public void JoinLobby()
         {
-            CSteamID steamID = new CSteamID(Convert.ToUInt64(lobbyInput.text));
-            instance.startGameButton.IsActive();
-            BootstrapManager.JoinByID(steamID);
+            Game.Instance.mainMenuController.JoinLobby(lobbyInput.text);
         }
 
         public void LeaveLobby()
         {
-            BootstrapManager.LeaveLobby();
+            Game.Instance.mainMenuController.LeaveLobby();
             OpenMainMenu();
         }
 
         public void StartGame()
         {
-            string[] scenesToClose = new string[] { "MainMenuScene" };
-            BootstrapNetworkManager.ChangeNetworkScene("MainScene", scenesToClose);
-            Game.Instance.manualPlayerSpawner.SpawnPlayers(SceneManager.GetScene("MainScene"));
+            Game.Instance.mainMenuController.StartGame();
         }
     }
