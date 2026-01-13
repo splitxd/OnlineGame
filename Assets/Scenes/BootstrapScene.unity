@@ -232,6 +232,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manualPlayerSpawner: {fileID: 2022478983}
+  menuViewController: {fileID: 0}
+  bootstrapManager: {fileID: 0}
+  bootstrapNetworkManager: {fileID: 0}
+  mainMenuView: {fileID: 0}
+  lobbyNetwork: {fileID: 0}
+  readyMenuSpawner: {fileID: 0}
 --- !u!4 &1290350524
 Transform:
   m_ObjectHideFlags: 0
@@ -465,8 +471,9 @@ GameObject:
   - component: {fileID: 2022478984}
   - component: {fileID: 2022478983}
   - component: {fileID: 2022478982}
+  - component: {fileID: 2022478985}
   m_Layer: 0
-  m_Name: PlayerSpawner
+  m_Name: Spawners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -556,6 +563,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2022478985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022478981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df34fb2603841d0b1034e1fad8f83b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 2022478982}
+  _networkObjectCache: {fileID: 0}
+  readyMenuPrefab: {fileID: 7255337676172418029, guid: 1318abde2411aff43bc6b1f18f7d9cc9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

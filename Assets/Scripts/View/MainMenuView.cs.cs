@@ -1,6 +1,8 @@
     using System;
     using System.Collections.Generic;
     using DefaultNamespace;
+    using FishNet.Managing;
+    using FishNet.Managing.Client;
     using FishNet.Managing.Scened;
     using FishNet.Object;
     using Steamworks;
@@ -8,22 +10,22 @@
     using UnityEngine;
     using UnityEngine.UI;
 
-    public class MainMenuManager : MonoBehaviour
+    public class MainMenuView : MonoBehaviour
     {
-        private static MainMenuManager instance;
-        
-        [SerializeField] private GameObject readyMenuPrefab;
-        [SerializeField] private Transform readyMenuContainer;
+        public Transform readyMenuContainer;
         [SerializeField] private GameObject menuScreen, lobbyScreen;
         [SerializeField] private TMP_InputField lobbyInput;
+        
+        [SerializeField] private TMP_Text debugText;
 
         [SerializeField] private TextMeshProUGUI lobbyTitle, lobbyIDText;
         [SerializeField] private Button startGameButton;
-        private void Awake() => instance = this;
+        private void Awake() => Game.Instance.mainMenuView = this;
 
         private void Start()
         {
             OpenMainMenu();
+            Game.Instance.debugText = debugText;
         }
 
         public void CreateLobby()
@@ -43,12 +45,12 @@
             lobbyScreen.SetActive(true);
         }
 
-        public static void LobbyEntered(string lobbyName, bool isHost)
+        public void LobbyEntered(string lobbyName, bool isHost)
         {
-            instance.lobbyTitle.text = lobbyName;
-            instance.startGameButton.gameObject.SetActive(isHost);
-            instance.lobbyIDText.text = BootstrapManager.CurrentLobbyID.ToString();
-            instance.OpenLobby();
+            lobbyTitle.text = lobbyName;
+            startGameButton.gameObject.SetActive(isHost);
+            lobbyIDText.text = BootstrapManager.CurrentLobbyID.ToString();
+            OpenLobby();
         }
 
         void CloseAllScreens()
@@ -71,5 +73,11 @@
         public void StartGame()
         {
             Game.Instance.mainMenuController.StartGame();
+        }
+        
+        
+        public void SetStartButtonActive()
+        {
+            startGameButton.interactable = true;
         }
     }

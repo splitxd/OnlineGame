@@ -25,14 +25,25 @@ namespace DefaultNamespace.Network
 
         public void LeaveLobby()
         {
-            BootstrapManager.LeaveLobby();
+            Game.Instance.bootstrapManager.LeaveLobby();
         }
 
         public void StartGame()
         {
             string[] scenesToClose = new string[] { "MainMenuScene" };
-            BootstrapNetworkManager.ChangeNetworkScene("MainScene", scenesToClose);
+            Game.Instance.bootstrapNetworkManager.ChangeNetworkScene("MainScene", scenesToClose);
             Game.Instance.manualPlayerSpawner.SpawnPlayers(SceneManager.GetScene("MainScene"));
+        }
+
+        public void ToggleReady(bool ready)
+        {
+            Game.Instance.lobbyNetwork.SendReadyToServer(ready, SteamUser.GetSteamID());
+        }
+
+        public void LobbyEntered(string lobbyName, bool isHost)
+        {
+            Game.Instance.mainMenuView.LobbyEntered(lobbyName, isHost);
+            Game.Instance.readyMenuSpawner.NeedToCreateReadyMenu();
         }
     }
 }

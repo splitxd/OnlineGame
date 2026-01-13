@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using FishNet.Managing;
 using Steamworks;
 using UnityEngine;
@@ -5,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class BootstrapManager : MonoBehaviour
 {
-    private static BootstrapManager instance;
-    private void Awake() => instance = this;
 
     [SerializeField] private string menuName = "MenuSceneSteam";
     [SerializeField] private NetworkManager _networkManager;
@@ -26,7 +25,9 @@ public class BootstrapManager : MonoBehaviour
         LobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);
     }
     
-    private void OnEnable() {
+    private void OnEnable()
+    {
+        Game.Instance.bootstrapManager = this;
         if (SteamManager.Initialized) {
             GameOverlayActivated = Callback<GameOverlayActivated_t>.Create(OnGameOverlayActivated);
         }
@@ -72,11 +73,12 @@ public class BootstrapManager : MonoBehaviour
     private void OnLobbyEntered(LobbyEnter_t callback)
     {
         CurrentLobbyID = callback.m_ulSteamIDLobby;
-        
-        MainMenuManager.LobbyEntered(SteamMatchmaking.GetLobbyData(new CSteamID(CurrentLobbyID), "name"), _networkManager.IsServer);
+        Game.Instance.mainMenuController.LobbyEntered(SteamMatchmaking.GetLobbyData(new CSteamID(CurrentLobbyID), "name"), _networkManager.IsServerStarted);
         
         _fishySteamworks.SetClientAddress(SteamMatchmaking.GetLobbyData(new CSteamID(CurrentLobbyID), "HostAddress"));
         _fishySteamworks.StartConnection(false);
+        
+        
     }
 
     public static void JoinByID(CSteamID steamID)
@@ -88,13 +90,13 @@ public class BootstrapManager : MonoBehaviour
             Debug.Log("Failed to join lobby with ID: " + steamID.m_SteamID);
     }
 
-    public static void LeaveLobby()
+    public void LeaveLobby()
     {
         SteamMatchmaking.LeaveLobby(new CSteamID(CurrentLobbyID));
         CurrentLobbyID = 0;
 
-        instance._fishySteamworks.StopConnection(false);
-        if(instance._networkManager.IsServerStarted)
-            instance._fishySteamworks.StopConnection(true);
+        _fishySteamworks.StopConnection(false);
+        if(_networkManager.IsServerStarted)
+            _fishySteamworks.StopConnection(true);
     }
 }

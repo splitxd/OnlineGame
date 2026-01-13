@@ -1,4 +1,5 @@
 using System.Linq;
+using DefaultNamespace;
 using FishNet.Connection;
 using FishNet.Managing.Scened;
 using FishNet.Object;
@@ -6,16 +7,15 @@ using UnityEngine;
 
 public class BootstrapNetworkManager : NetworkBehaviour
 {
-    private static BootstrapNetworkManager instance;
-    private void Awake() => instance = this;
+    private void Awake() => Game.Instance.bootstrapNetworkManager = this;
 
-    public static void ChangeNetworkScene(string sceneName, string[] scenesToClose)
+    public void ChangeNetworkScene(string sceneName, string[] scenesToClose)
     {
-        instance.CloseScenes(scenesToClose);
+        CloseScenes(scenesToClose);
 
         SceneLoadData sld = new SceneLoadData(sceneName);
-        NetworkConnection[] conns = instance.ServerManager.Clients.Values.ToArray();
-        instance.SceneManager.LoadConnectionScenes(conns, sld);
+        NetworkConnection[] conns = ServerManager.Clients.Values.ToArray();
+        SceneManager.LoadConnectionScenes(conns, sld);
     }
 
     [ServerRpc(RequireOwnership = false)]

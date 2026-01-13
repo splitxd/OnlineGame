@@ -1,6 +1,7 @@
 using DefaultNamespace.Player;
 using FishNet.Object;
 using UnityEngine;
+using FishNet.Managing.Scened;
 
 public class PlayerCamera : NetworkBehaviour
 {
